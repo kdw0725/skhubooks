@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skhu.ProjectManager.boardMapper"><!-- 이거 수정해줘야된다 동욱아 -->
+	<select id='boardList' resultType="VO">
+		SELECT
+                            @rownum:=@rownum+1 No,
+                            BOARD_NO,
+                            BOARD_TITLE,
+                            BOARD_CONTENT,
+                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+                            BOARD_WRITER
+        FROM 
+                            BOARD_LIST,
+                            (SELECT @rownum:=0) r
+        WHERE               BOARD_NO > 0
+        AND            		BOARD_DELFLAG = 'N'
+	</select>
+
+</mapper>
