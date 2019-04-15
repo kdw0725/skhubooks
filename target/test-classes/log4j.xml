@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.skhu.ProjectManager">
+	<logger name="com.skhubooks">
 		<level value="info" />
 	</logger>
 	

@@ -1,4 +1,4 @@
-package com.skhu.ProjectManager.VO;
+package com.skhu.skhubooks.VO;
 
 import lombok.Getter;
 import lombok.Setter;

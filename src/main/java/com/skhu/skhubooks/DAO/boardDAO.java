@@ -1,8 +1,8 @@
-package com.skhu.ProjectManager.DAO;
+package com.skhu.skhubooks.DAO;
 
 import java.util.List;
 
-import com.skhu.ProjectManager.VO.boardVO;
+import com.skhu.skhubooks.VO.boardVO;
 
 public interface boardDAO {
 	public List<boardVO> boardList() throws Exception;

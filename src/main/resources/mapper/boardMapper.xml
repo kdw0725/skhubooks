@@ -2,20 +2,20 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skhu.ProjectManager.boardMapper"><!-- 이거 수정해줘야된다 동욱아 -->
+<mapper namespace="com.skhu.skhubooks.boardMapper"><!-- 이거 수정해줘야된다 동욱아 -->
 	<select id='boardList' resultType="VO">
 		SELECT
                             @rownum:=@rownum+1 No,
                             BOARD_NO,
                             BOARD_TITLE,
                             BOARD_CONTENT,
-                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+	        	            DATE_ADD(BOARD_INSERTDATE, INTERVAL 9 HOUR) AS BOARD_INSERTDATE,
                             BOARD_WRITER
         FROM 
                             BOARD_LIST,
                             (SELECT @rownum:=0) r
         WHERE               BOARD_NO > 0
-        AND            		BOARD_DELFLAG = 'N'
+        ORDER BY 			No DESC
 	</select>
 
 </mapper>

@@ -1,4 +1,4 @@
-package com.skhu.ProjectManager.Service;
+package com.skhu.skhubooks.Service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skhu.ProjectManager.DAO.boardDAO;
-import com.skhu.ProjectManager.VO.boardVO;
+import com.skhu.skhubooks.DAO.boardDAO;
+import com.skhu.skhubooks.VO.boardVO;
 
 @Service
 public class boardServiceImpl implements boardService{

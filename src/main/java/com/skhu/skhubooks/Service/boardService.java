@@ -1,8 +1,8 @@
-package com.skhu.ProjectManager.Service;
+package com.skhu.skhubooks.Service;
 
 import java.util.List;
 
-import com.skhu.ProjectManager.VO.boardVO;
+import com.skhu.skhubooks.VO.boardVO;
 
 public interface boardService {
 	public List<boardVO> boardList() throws Exception;

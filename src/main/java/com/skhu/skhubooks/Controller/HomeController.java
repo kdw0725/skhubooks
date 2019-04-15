@@ -1,4 +1,4 @@
-package com.skhu.ProjectManager.Controller;
+package com.skhu.skhubooks.Controller;
 
 import java.util.List;
 import java.util.Locale;
@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.skhu.ProjectManager.Service.boardService;
-import com.skhu.ProjectManager.VO.boardVO;
+import com.skhu.skhubooks.Service.boardService;
+import com.skhu.skhubooks.VO.boardVO;
 
 /**
  * Handles requests for the application home page.
