@@ -17,5 +17,19 @@
         WHERE               BOARD_NO > 0
         ORDER BY 			No DESC
 	</select>
+	
+	<insert id='boardInsert' parameterType="VO">
+	INSERT 
+	INTO 					BOARD_LIST(
+							BOARD_WRITER, 
+							BOARD_TITLE, 
+							BOARD_CONTENT) 
+	VALUES 					(
+							#{board_writer}, 
+							#{board_title}, 
+							#{board_content}
+							)
+	
+	</insert>
 
 </mapper>

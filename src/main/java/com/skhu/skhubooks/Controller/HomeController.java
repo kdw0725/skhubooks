@@ -1,6 +1,5 @@
 package com.skhu.skhubooks.Controller;
 
-import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skhu.skhubooks.Service.boardService;
-import com.skhu.skhubooks.VO.boardVO;
 
 /**
  * Handles requests for the application home page.
@@ -31,15 +29,5 @@ public class HomeController {
 				
 		return "home";
 	}
-	
-	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
-	public String boardList(Model model)throws Exception{
-		List<boardVO> list;
-		list = service.boardList();
-		model.addAttribute("list", list);
-		return "/board/boardList";
-		
-	}
-
 	
 }
