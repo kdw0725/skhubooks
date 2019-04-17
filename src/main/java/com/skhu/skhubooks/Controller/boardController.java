@@ -37,7 +37,7 @@ public class boardController {
 	
 	@RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
 	public String boardDetail(Model model, boardVO boardvo)throws Exception{
-		System.out.println(boardvo.getBoard_no());
+		model.addAttribute("list", service.boardDetail(boardvo.getBoard_no()));
 		return "/board/boardDetail";
 	}
 	

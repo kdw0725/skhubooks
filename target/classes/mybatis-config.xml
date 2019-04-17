@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="VO" type="com.skhu.skhubooks.VO.boardVO" />
+		<typeAlias alias="boardVO" type="com.skhu.skhubooks.VO.boardVO" />
 	</typeAliases>
 
 </configuration>
