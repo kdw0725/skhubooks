@@ -41,6 +41,12 @@ public class boardController {
 		return "/board/boardDetail";
 	}
 	
+	@RequestMapping(value = "/boardDelete", method = RequestMethod.GET)
+	public String boardDelete(Model model, boardVO boardvo)throws Exception{
+		service.boardDelete(boardvo.getBoard_no());
+		return "redirect:/boardList";
+	}
+	
 	@RequestMapping(value = "/boardUpdate", method = RequestMethod.GET)
 	public String boardUpdate(Model model)throws Exception{
 		return "/board/boardUpdate";

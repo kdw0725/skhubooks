@@ -8,5 +8,5 @@ public interface boardService {
 	public List<boardVO> boardList() throws Exception;
 	public int boardInsert(boardVO VO) throws Exception;
 	public boardVO boardDetail(int board_no) throws Exception;
-
+	public int boardDelete(int board_no) throws Exception;
 }

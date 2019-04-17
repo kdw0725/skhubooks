@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<table border = 1px>
 		<tr>
 			<td>제목</td>
-			<td>${list.board_title }</td>			
+			<td>${list.board_title }</td>
 		</tr>
 		<tr>
 			<td>작성자</td>
@@ -19,12 +18,22 @@
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><textarea name="board_content" id="editor" style="width: 1100px; height: 205px;" required="required" readonly="readonly">${list.board_content }</textarea>
+			<td>
+				<textarea name="board_content" id="editor" style="width: 1100px; height: 205px;" required="required" readonly="readonly">${list.board_content }</textarea>
 			</td>
 		</tr>
-		
 	</table>
+	<input type="button" onclick="boardDelete(${list.board_no })" value="삭제">
 
 
 </body>
+
+<script>
+function boardDelete(board_no){
+	if(confirm("삭제하시겠습니까?")){
+	location.href="/SKHUBooks/boardDelete?board_no="+board_no;
+	}
+	return false;
+}
+</script>
 </html>

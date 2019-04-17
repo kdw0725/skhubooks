@@ -34,6 +34,7 @@
 	
 	<select id="boardDetail" parameterType="int" resultType="boardVO">
 	SELECT 
+							BOARD_NO,
 							BOARD_WRITER, 
 							BOARD_TITLE, 
 							BOARD_CONTENT 
@@ -42,5 +43,13 @@
 	WHERE 
 							BOARD_NO = #{board_no}
 	</select>
+	
+	<delete id="boardDelete" parameterType="int">
+	DELETE 
+	FROM 				
+							BOARD_LIST
+	WHERE
+							BOARD_NO = #{board_no}
+	</delete>
 
 </mapper>
