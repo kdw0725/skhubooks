@@ -23,12 +23,17 @@
 			</td>
 		</tr>
 	</table>
+	<input type="button" onclick="boardUpdate(${list.board_no })" value="수정">
 	<input type="button" onclick="boardDelete(${list.board_no })" value="삭제">
 
 
 </body>
 
 <script>
+function boardUpdate(board_no){
+	location.href="/SKHUBooks/boardUpdate?board_no="+board_no;
+}
+
 function boardDelete(board_no){
 	if(confirm("삭제하시겠습니까?")){
 	location.href="/SKHUBooks/boardDelete?board_no="+board_no;

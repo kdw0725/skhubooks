@@ -51,5 +51,16 @@
 	WHERE
 							BOARD_NO = #{board_no}
 	</delete>
+	
+	<update id="boardUpdate" parameterType="boardVO">
+	UPDATE
+						BOARD_LIST
+	SET
+						BOARD_TITLE = #{board_title},
+        	            BOARD_CONTENT = #{board_content}
+	WHERE
+						BOARD_NO = #{board_no}
+	
+	</update>
 
 </mapper>

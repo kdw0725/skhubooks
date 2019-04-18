@@ -9,4 +9,6 @@ public interface boardService {
 	public int boardInsert(boardVO VO) throws Exception;
 	public boardVO boardDetail(int board_no) throws Exception;
 	public int boardDelete(int board_no) throws Exception;
+	public int boardUpdate(boardVO VO) throws Exception;
+
 }

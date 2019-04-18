@@ -37,7 +37,7 @@ public class boardController {
 	
 	@RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
 	public String boardDetail(Model model, boardVO boardvo)throws Exception{
-		model.addAttribute("list", service.boardDetail(boardvo.getBoard_no()));
+		model.addAttribute("list",service.boardDetail(boardvo.getBoard_no()));
 		return "/board/boardDetail";
 	}
 	
@@ -48,8 +48,15 @@ public class boardController {
 	}
 	
 	@RequestMapping(value = "/boardUpdate", method = RequestMethod.GET)
-	public String boardUpdate(Model model)throws Exception{
+	public String boardUpdate(Model model, boardVO boardvo)throws Exception{
+		model.addAttribute("list",service.boardDetail(boardvo.getBoard_no()));
 		return "/board/boardUpdate";
 	}
 	
+	@RequestMapping(value = "/boardUpdateDo", method = RequestMethod.GET)
+	public String boardUpdateDo(Model model, boardVO boardvo)throws Exception{
+//		System.out.println(boardvo);
+		service.boardUpdate(boardvo);
+		return "redirect:/boardList";
+	}
 }
