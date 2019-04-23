@@ -57,6 +57,6 @@ public class boardController {
 	public String boardUpdateDo(Model model, boardVO boardvo)throws Exception{
 //		System.out.println(boardvo);
 		service.boardUpdate(boardvo);
-		return "redirect:/boardList";
+		return "redirect:/boardDetail?board_no="+boardvo.getBoard_no();
 	}
 }
