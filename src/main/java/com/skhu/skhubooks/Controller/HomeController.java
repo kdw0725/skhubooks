@@ -34,10 +34,20 @@ public class HomeController {
 		return "/member/signIn";
 	}
 	
-	@RequestMapping(value="signInDo", method= RequestMethod.GET)
+	@RequestMapping(value="signInDo", method = RequestMethod.GET)
 	public String signInDo(Model model, memberVO VO) throws Exception {
 		System.out.println(VO);
 		service.memberSignIn(VO);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="logIn", method = RequestMethod.GET)
+	public String logIn(Model model) {
+		return "/member/logIn";
+	}
+	
+	@RequestMapping(value="logInDo", method = RequestMethod.GET)
+	public String logInDo(Model model) {
 		return "redirect:/";
 	}
 }
