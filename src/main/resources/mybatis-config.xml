@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias alias="boardVO" type="com.skhu.skhubooks.VO.boardVO" />
 		<typeAlias alias="qnaVO" type="com.skhu.skhubooks.VO.qnaVO"/>
+		<typeAlias alias="memberVO" type="com.skhu.skhubooks.VO.memberVO"/>
 	</typeAliases>
 
 </configuration>
