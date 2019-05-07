@@ -9,6 +9,6 @@
 	Hello world!  
 </h1>
 
-<h2><a href="boardList">boardList</a></h2>
+<h2><a href="board/boardList">boardList</a></h2>
 </body>
 </html>

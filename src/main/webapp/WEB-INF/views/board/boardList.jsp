@@ -36,7 +36,7 @@
 
 <script>
 function boardInsert(){
-	location.href="/SKHUBooks/boardInsert";
+	location.href="/SKHUBooks/board/boardInsert";
 }
 </script>
 </html>

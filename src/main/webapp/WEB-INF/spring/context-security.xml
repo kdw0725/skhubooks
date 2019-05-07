@@ -7,8 +7,10 @@
                                  http://www.springframework.org/schema/security
                                  http://www.springframework.org/schema/security/spring-security.xsd">
         
-        <http auto-config="true" use-expressions="false">
-            <intercept-url pattern="/**" access="ROLE_USER" />
+        <http auto-config="true" use-expressions="true">
+        	<intercept-url pattern="/board/**" access="hasRole('ROLE_ADMIN')" />
+        	<intercept-url pattern="/qna/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_GUEST')" />
+        	<intercept-url pattern="/**" access = "permitAll"/>
         </http>
         
         <authentication-manager>
@@ -16,6 +18,7 @@
                 <user-service>
                     <user name="user" password="userPw" authorities="ROLE_USER"/>
                     <user name="guest" password="guest" authorities="ROLE_GUEST"/>
+                    <user name="admin" password="admin" authorities="ROLE_ADMIN"/>
                 </user-service>
             </authentication-provider>
         </authentication-manager>

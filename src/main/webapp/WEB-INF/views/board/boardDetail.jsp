@@ -31,12 +31,12 @@
 
 <script>
 function boardUpdate(board_no){
-	location.href="/SKHUBooks/boardUpdate?board_no="+board_no;
+	location.href="/SKHUBooks/board/boardUpdate?board_no="+board_no;
 }
 
 function boardDelete(board_no){
 	if(confirm("삭제하시겠습니까?")){
-	location.href="/SKHUBooks/boardDelete?board_no="+board_no;
+	location.href="/SKHUBooks/board/boardDelete?board_no="+board_no;
 	}
 	return false;
 }

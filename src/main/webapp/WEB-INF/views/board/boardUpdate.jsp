@@ -35,7 +35,7 @@
 <script>
 function cancelUpdate(board_no){
 	if(confirm("수정을 취소하시겠습니까?")){
-		location.href="/SKHUBooks/boardDetail?board_no="+board_no;
+		location.href="/SKHUBooks/board/boardDetail?board_no="+board_no;
 	}
 	return false;
 }

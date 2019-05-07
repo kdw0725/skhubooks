@@ -16,7 +16,7 @@ public class boardController {
 	@Autowired
 	boardService service;
 	
-	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/boardList", method = RequestMethod.GET)
 	public String boardList(Model model)throws Exception{
 		List<boardVO> list;
 		list = service.boardList();
@@ -24,39 +24,39 @@ public class boardController {
 		return "/board/boardList";
 	}
 	
-	@RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/boardInsert", method = RequestMethod.GET)
 	public String boardInsert(Model model)throws Exception{
 		return "/board/boardInsert";
 	}
 	
-	@RequestMapping(value = "/boardInsertDo", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/boardInsertDo", method = RequestMethod.GET)
 	public String boardInsertDo(Model model, boardVO boardvo)throws Exception{
 		service.boardInsert(boardvo);
-		return "redirect:/boardList";
+		return "redirect:/board/boardList";
 	}
 	
-	@RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/boardDetail", method = RequestMethod.GET)
 	public String boardDetail(Model model, boardVO boardvo)throws Exception{
 		model.addAttribute("list",service.boardDetail(boardvo.getBoard_no()));
 		return "/board/boardDetail";
 	}
 	
-	@RequestMapping(value = "/boardDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/boardDelete", method = RequestMethod.GET)
 	public String boardDelete(Model model, boardVO boardvo)throws Exception{
 		service.boardDelete(boardvo.getBoard_no());
-		return "redirect:/boardList";
+		return "redirect:/board/boardList";
 	}
 	
-	@RequestMapping(value = "/boardUpdate", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/boardUpdate", method = RequestMethod.GET)
 	public String boardUpdate(Model model, boardVO boardvo)throws Exception{
 		model.addAttribute("list",service.boardDetail(boardvo.getBoard_no()));
 		return "/board/boardUpdate";
 	}
 	
-	@RequestMapping(value = "/boardUpdateDo", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/boardUpdateDo", method = RequestMethod.GET)
 	public String boardUpdateDo(Model model, boardVO boardvo)throws Exception{
 //		System.out.println(boardvo);
 		service.boardUpdate(boardvo);
-		return "redirect:/boardDetail?board_no="+boardvo.getBoard_no();
+		return "redirect:/board/boardDetail?board_no="+boardvo.getBoard_no();
 	}
 }
