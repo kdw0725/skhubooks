@@ -29,25 +29,30 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value="signIn", method = RequestMethod.GET)
+	@RequestMapping(value="/member/signIn", method = RequestMethod.GET)
 	public String signIn(Model model) {
 		return "/member/signIn";
 	}
 	
-	@RequestMapping(value="signInDo", method = RequestMethod.GET)
+	@RequestMapping(value="/member/signInDo", method = RequestMethod.GET)
 	public String signInDo(Model model, memberVO VO) throws Exception {
 		System.out.println(VO);
 		service.memberSignIn(VO);
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="logIn", method = RequestMethod.GET)
+	@RequestMapping(value="/member/logIn", method = RequestMethod.GET)
 	public String logIn(Model model) {
 		return "/member/logIn";
 	}
 	
-	@RequestMapping(value="logInDo", method = RequestMethod.GET)
+	@RequestMapping(value="/member/logInDo", method = RequestMethod.GET)
 	public String logInDo(Model model) {
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/access_denied_page")
+	public String accessDeniedPage() throws Exception{
+		return "/member/access_denied_page";
 	}
 }

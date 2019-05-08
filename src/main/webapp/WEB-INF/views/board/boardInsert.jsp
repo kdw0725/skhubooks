@@ -16,7 +16,7 @@
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" name="board_writer"></td>
+				<td><input type="text" name="board_writer" ></td>
 			</tr>
 			
 			<tr>
