@@ -4,18 +4,18 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.skhu.skhubooks.VO.memberVO;
+import com.skhu.skhubooks.VO.CustomUserDetails;
 
-@Repository
-public class memberDAOImpl implements memberDAO{
+@Repository("userAuthDAO")
+public class UserAuthDAO {
 	private static final String namespace="com.skhu.skhubooks.memberMapper";
 
 	@Autowired
 	private SqlSession sqlSession;
 
-	@Override
-	public int memberSignIn(memberVO VO) throws Exception {
-		return sqlSession.insert(namespace+".memberSignIn", VO);
+	public CustomUserDetails getUserById(String username) {
+		return sqlSession.selectOne(namespace+".selectUserById", username);
 	}
 
+	
 }

@@ -10,8 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.skhu.skhubooks.Service.memberService;
-import com.skhu.skhubooks.VO.memberVO;
+import com.skhu.skhubooks.Service.CustomUserDetailService;
 
 /**
  * Handles requests for the application home page.
@@ -19,7 +18,7 @@ import com.skhu.skhubooks.VO.memberVO;
 @Controller
 public class HomeController {
 	@Autowired
-	memberService service;
+	CustomUserDetailService service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -35,9 +34,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/member/signInDo", method = RequestMethod.GET)
-	public String signInDo(Model model, memberVO VO) throws Exception {
-		System.out.println(VO);
-		service.memberSignIn(VO);
+	public String signInDo(Model model) throws Exception {
 		return "redirect:/";
 	}
 	

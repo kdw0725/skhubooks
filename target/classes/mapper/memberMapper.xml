@@ -21,5 +21,16 @@
 							#{member_pnum}
 							)
 	</insert>
-
+	
+	<select id="selectUserById" resultType="memberVO">
+		<![CDATA[
+            SELECT
+            				*
+            FROM
+            				MEMBER
+            WHERE
+            				MEMBER_ID=#{ member_id}
+        ]]>
+	</select>
+	
 </mapper>
