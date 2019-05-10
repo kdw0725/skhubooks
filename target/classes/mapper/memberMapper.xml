@@ -14,11 +14,11 @@
 							MEMBER_PNUM) 
 		VALUES
 							(
-							#{member_name},
-							#{member_id},
-							#{member_pw},
-							#{member_birth},
-							#{member_pnum}
+							#{ member_name},
+							#{ member_id},
+							#{ member_pw},
+							#{ member_birth},
+							#{ member_pnum}
 							)
 	</insert>
 	

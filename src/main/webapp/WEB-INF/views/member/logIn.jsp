@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>logIn</title>
 </head>
 <body>
 
@@ -22,8 +22,12 @@
 		        <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session"/>
 		    </font>
 		</c:if>
-		<input type="submit" value="logIn">
-		<a href="/SKHUBooks/signIn">회원가입</a>
+		<p>Remember Me
+			<input type="checkbox" name="RememberMe" name="_spring_security_remember_me">
+		</p>
+		<input type="submit" value="logIn"><br>
+		
+		<a href="/SKHUBooks/member/signIn">회원가입</a>
 	</form>
 </body>
 </html>

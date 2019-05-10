@@ -14,7 +14,12 @@ public class UserAuthDAO {
 	private SqlSession sqlSession;
 
 	public CustomUserDetails getUserById(String username) {
+		
 		return sqlSession.selectOne(namespace+".selectUserById", username);
+	}
+	
+	public int memberSignIn(CustomUserDetails userdetail) {
+		return sqlSession.insert(namespace+".memberSignIn",userdetail);
 	}
 
 	

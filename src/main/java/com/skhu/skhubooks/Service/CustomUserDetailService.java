@@ -20,5 +20,9 @@ public class CustomUserDetailService implements UserDetailsService{
 		}
 		return user;
 	}
+	
+	public int memberSignIn(CustomUserDetails userdetail) {
+		return userAuthDAO.memberSignIn(userdetail);
+	}
 
 }

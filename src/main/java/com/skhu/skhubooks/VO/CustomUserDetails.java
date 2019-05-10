@@ -7,7 +7,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.ToString;
+
 @SuppressWarnings("serial")
+@ToString
 public class CustomUserDetails implements UserDetails{
 	private int	    member_no;
 	private String  member_name;
@@ -28,9 +31,15 @@ public class CustomUserDetails implements UserDetails{
 	public String getPassword() {
 		return member_pw;
 	}
+	public void setPassword(String member_pw) {
+		this.member_pw=member_pw;
+	}
 	@Override
 	public String getUsername() {
 		return member_id;
+	}
+	public void setUsername(String member_id) {
+		this.member_id=member_id;
 	}
 	@Override
 	public boolean isAccountNonExpired() {

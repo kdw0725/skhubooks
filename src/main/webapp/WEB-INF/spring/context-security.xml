@@ -23,25 +23,28 @@
         			login-page="/member/logIn"
         			default-target-url="/"	
         	/>
-        	<security:logout
+        	<security:logout invalidate-session="true"
+        			delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE"
         			logout-url="/logout"
         			logout-success-url="/"
         	/>
         	
+        	<security:remember-me key="remkey" token-validity-seconds="3600"/>
+        	
         	<security:access-denied-handler error-page="/access_denied_page"/>
+        	
         </security:http>
         
         
-        
+         
         <security:authentication-manager>
             <security:authentication-provider user-service-ref="userService">
-<!--                 <security:user-service> -->
-<!--                     <security:user name="user" password="userPw" authorities="ROLE_USER"/> -->
-<!--                     <security:user name="guest" password="guest" authorities="ROLE_GUEST"/> -->
-<!--                     <security:user name="admin" password="admin" authorities="ROLE_ADMIN"/> -->
-<!--                 </security:user-service> -->
+            	<security:password-encoder ref="bcryptPasswordEncoder"/>
             </security:authentication-provider>
         </security:authentication-manager>
         
         <bean id="userService" class="com.skhu.skhubooks.Service.CustomUserDetailService"/>
+        
+		<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />  
+        
 </beans>
