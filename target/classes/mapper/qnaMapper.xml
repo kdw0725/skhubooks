@@ -13,5 +13,20 @@
 		FROM
 							QNA_LIST
 	</select>
-
+	
+	<insert id="qnaInsert" parameterType="qnaVO">
+		INSERT 
+		INTO 
+							QNA_LIST
+							(
+							QNA_WRITER, 
+							QNA_CONTENT
+							) 
+		VALUES 
+							(
+							#{qna_writer},
+							#{qna_content}
+							)
+		
+	</insert>
 </mapper>

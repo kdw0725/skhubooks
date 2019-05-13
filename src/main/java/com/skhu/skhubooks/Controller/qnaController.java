@@ -16,11 +16,17 @@ public class qnaController {
 	@Autowired
 	qnaService service;
 	
-	@RequestMapping(value = "/qnaList", method = RequestMethod.GET)
+	@RequestMapping(value = "/qna/qnaList", method = RequestMethod.GET)
 	public String qnaList(Model model)throws Exception{
 		List<qnaVO> list;
 		list = service.qnaList();
 		model.addAttribute("list", list);
 		return "/qna/qnaList";
+	}
+	
+	@RequestMapping(value="/qna/qnaInsert", method  = RequestMethod.GET)
+	public String qnaInsert(Model model, qnaVO qnavo) throws Exception{
+		service.qnaInsert(qnavo);
+		return "redirect:/qna/qnaList";
 	}
 }

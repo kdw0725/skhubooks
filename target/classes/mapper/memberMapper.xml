@@ -33,4 +33,13 @@
         ]]>
 	</select>
 	
+	<select id="selectUserID" parameterType="String" resultType="Integer">
+			SELECT
+							COUNT(MEMBER_ID) AS RESULT
+			FROM
+							MEMBER
+			WHERE
+							MEMBER_ID = #{member_id}
+	</select>
+	
 </mapper>

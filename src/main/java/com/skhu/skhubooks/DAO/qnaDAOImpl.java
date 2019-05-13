@@ -20,4 +20,9 @@ public class qnaDAOImpl implements qnaDAO{
 		return sqlSession.selectList(namespace+".qnaList");
 	}
 
+	@Override
+	public int qnaInsert(qnaVO qnavo) throws Exception {
+		return sqlSession.insert(namespace+".qnaInsert",qnavo);
+	}
+
 }

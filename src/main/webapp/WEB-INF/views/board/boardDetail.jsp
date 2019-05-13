@@ -37,6 +37,7 @@ function boardUpdate(board_no){
 function boardDelete(board_no){
 	if(confirm("삭제하시겠습니까?")){
 	location.href="/SKHUBooks/board/boardDelete?board_no="+board_no;
+	alert("삭제 되었습니다.")
 	}
 	return false;
 }

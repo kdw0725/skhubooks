@@ -14,8 +14,10 @@
         	<security:intercept-url pattern="/board/**" access="hasRole('ROLE_ADMIN')" />
         	<security:intercept-url pattern="/qna/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_GUEST')" />
         	<security:intercept-url pattern="/include/**" access="permitAll" />
-        	<security:intercept-url pattern="/member/**" access="permitAll" />
+        	<security:intercept-url pattern="/member/**" access="isAnonymous()" />
+        	<security:intercept-url pattern="/checkMemberID" access = "permitAll"/>
         	<security:intercept-url pattern="/**" access = "permitAll"/>
+        	
         	
         	<security:form-login
         			username-parameter="member_id"

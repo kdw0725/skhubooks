@@ -1,5 +1,7 @@
 package com.skhu.skhubooks.Service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,5 +26,8 @@ public class CustomUserDetailService implements UserDetailsService{
 	public int memberSignIn(CustomUserDetails userdetail) {
 		return userAuthDAO.memberSignIn(userdetail);
 	}
-
+	
+	public int selectUserID(String member_id) throws Exception{
+		return userAuthDAO.selectUserID(member_id);
+	}
 }

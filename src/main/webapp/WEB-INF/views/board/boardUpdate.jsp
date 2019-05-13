@@ -27,7 +27,7 @@
 			</tr>
 		
 		</table>
-		<input type="submit" value="수정 완료">
+		<input type="submit" value="수정 완료" onclick="updateFinish()">
 		<input type="button" value="수정 취소" onclick="cancelUpdate(${list.board_no})">
 	</form>
 
@@ -38,6 +38,9 @@ function cancelUpdate(board_no){
 		location.href="/SKHUBooks/board/boardDetail?board_no="+board_no;
 	}
 	return false;
+}
+function updateFinish(){
+	alert("수정이 완료되었습니다.");
 }
 </script>
 </html>

@@ -2,8 +2,6 @@ package com.skhu.skhubooks.Controller;
 
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skhu.skhubooks.Service.CustomUserDetailService;
 import com.skhu.skhubooks.VO.CustomUserDetails;
@@ -26,7 +25,6 @@ public class memberController {
 	@Autowired
 	BCryptPasswordEncoder passEncoder;
 	
-	private static final Logger logger = LoggerFactory.getLogger(memberController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -65,4 +63,9 @@ public class memberController {
 		return "/member/access_denied_page";
 	}
 	
+	@RequestMapping(value="/member/checkMemberID", method = RequestMethod.POST)
+	@ResponseBody
+	public int checkUserID(CustomUserDetails userDetail, String member_id) throws Exception{
+		return service.selectUserID(member_id);
+	}
 }
