@@ -12,6 +12,8 @@
 							QNA_COMMENT
 		FROM
 							QNA_LIST
+		ORDER BY
+							QNA_NO DESC
 	</select>
 	
 	<insert id="qnaInsert" parameterType="qnaVO">

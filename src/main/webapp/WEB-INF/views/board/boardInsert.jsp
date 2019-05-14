@@ -24,6 +24,13 @@
 				<td>내용</td>
 				<td><textarea name="board_content" id="editor" style="width: 1100px; height: 205px;" required="required"></textarea></td>
 			</tr>
+			<tr>
+				<td>파일</td>
+				<td>
+					<input type="text" name="file">
+					<input type="button" value="첨부">
+				</td>
+			</tr>
 			
 		</table>
 		<input type="submit">

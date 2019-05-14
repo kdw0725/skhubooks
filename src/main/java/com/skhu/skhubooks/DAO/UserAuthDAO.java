@@ -24,10 +24,6 @@ public class UserAuthDAO {
 	}
 	
 	public int selectUserID(String member_id) throws Exception{
-//		Map<String, Object> resultMap = sqlSession.selectOne(namespace+".selectUserID", map);
-//		int result = Integer.valueOf(String.valueOf(resultMap.get("RESULT")));
-//		return result;
-		
 		return sqlSession.selectOne(namespace+".selectUserID", member_id);
 	}
 	

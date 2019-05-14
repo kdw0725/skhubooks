@@ -29,4 +29,10 @@ public class qnaController {
 		service.qnaInsert(qnavo);
 		return "redirect:/qna/qnaList";
 	}
+	
+	@RequestMapping(value="/qna/qnaDelete", method  = RequestMethod.GET)
+	public String qnaDelete(Model model, qnaVO qnavo) {
+		
+		return "/qna/qnaDelete";
+	}
 }

@@ -16,6 +16,7 @@
         	<security:intercept-url pattern="/include/**" access="permitAll" />
         	<security:intercept-url pattern="/member/**" access="isAnonymous()" />
         	<security:intercept-url pattern="/checkMemberID" access = "permitAll"/>
+        	<security:intercept-url pattern="/webjars/**" access = "permitAll"/>
         	<security:intercept-url pattern="/**" access = "permitAll"/>
         	
         	
@@ -35,7 +36,12 @@
         	
         	<security:access-denied-handler error-page="/access_denied_page"/>
         	
+        	<security:session-management invalid-session-url="/member/logIn">
+        		<security:concurrency-control max-sessions="1" expired-url="/logIn" error-if-maximum-exceeded="true"/>
+        	</security:session-management>
+        		
         </security:http>
+         
         
         
          
