@@ -11,6 +11,7 @@
 	<link href="../../resource/css/lightbox.css" rel="stylesheet">
 	<link href="../../resource/css/main.css" rel="stylesheet">
 	<link href="../../resource/css/responsive.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
 	<script type="text/javascript" src="../../resource/js/jquery.js"></script>

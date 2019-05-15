@@ -25,4 +25,14 @@ public class qnaDAOImpl implements qnaDAO{
 		return sqlSession.insert(namespace+".qnaInsert",qnavo);
 	}
 
+	@Override
+	public int qnaDelete(int qna_no) throws Exception {
+		return sqlSession.delete(namespace+".qnaDelete",qna_no);
+	}
+
+	@Override
+	public int qnaUpdate(qnaVO qnavo) throws Exception {
+		return sqlSession.update(namespace+".qnaUpdate",qnavo);
+	}
+
 }

@@ -22,5 +22,15 @@ public class qnaServiceImpl implements qnaService{
 	public int qnaInsert(qnaVO qnavo) throws Exception {
 		return dao.qnaInsert(qnavo);
 	}
+
+	@Override
+	public int qnaDelete(int qna_no) throws Exception {
+		return dao.qnaDelete(qna_no);
+	}
+
+	@Override
+	public int qnaUpdate(qnaVO qnavo) throws Exception {
+		return dao.qnaUpdate(qnavo);
+	}
 	
 }

@@ -31,4 +31,23 @@
 							)
 		
 	</insert>
+	
+	<delete id="qnaDelete" parameterType="Integer">
+		DELETE 
+		FROM 
+							QNA_LIST 
+		WHERE 
+							QNA_NO = #{qna_no}
+		
+	</delete>
+	
+	<update id="qnaUpdate" parameterType="qnaVO">
+		UPDATE 
+							QNA_LIST 
+		SET 
+							QNA_CONTENT = #{qna_content}
+		WHERE 
+							QNA_NO = #{qna_no};
+	</update>
+	
 </mapper>
