@@ -10,5 +10,6 @@ public interface qnaService {
 	public int qnaDelete(int qna_no) throws Exception;
 	public int qnaUpdate(qnaVO qnavo) throws Exception;
 	public int commentInsert(qnaVO qnavo) throws Exception;
+	public int commentDelete(int qna_no) throws Exception;
 	
 }

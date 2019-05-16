@@ -53,8 +53,8 @@
 						</sec:authorize>
 					</c:if>
 					<c:if test="${list.qna_comment != null }">
-						<tr>
-							<td>└ <a id = "qna_comment(${list.qna_no })">${list.qna_comment }</a></td>
+						<tr id = "qna_comment${list.qna_no }">
+							<td>└ ${list.qna_comment }</td>
 							<td>
 								<a onclick = "commentUpdate(${list.qna_no})">수정</a>
 								<a onclick = "commentDelete(${list.qna_no})">삭제</a>
@@ -169,19 +169,22 @@ function commentInsert(qna_no){
 			}
 		});
 	};
-
 }
 
 function commentUpdate(qna_no){
-	var qna_comment = $("#qna_comment"+qna_no).val();
-	var qnaData = {"qna_comment" : qna_comment,
-			   	   "qna_no" : qna_no
-				  };
-	alert(qna_no);
+	$("#qna_comment"+qna_no).html('<textarea name="qna_comment" id="qna_editor" style="width: 300px; height: 100px;" required="required"></textarea>\
+									<br>\
+									<input type="hidden" name = "qna_no" value="'+qna_no+'">\
+									<input type="hidden" name="qna_writer" readonly="readonly" value="<sec:authentication property='principal.username'/>">\
+									<button>답글 수정</button>\
+									<button>수정 취소</button>\
+									');	
 }
 
 function commentDelete(qna_no){
-	alert('삭제할꺼다');
+	   if(confirm("답글을 삭제하시겠습니까?")){
+		   location.href = "/SKHUBooks/qna/commentDelete?qna_no="+qna_no;
+	   }
 }
 </script>
 </html>

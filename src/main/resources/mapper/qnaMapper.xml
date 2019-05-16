@@ -59,4 +59,12 @@
 							QNA_NO = #{qna_no}
 	</update>
 	
+	<update id="commentDelete" parameterType="Integer">
+		UPDATE 
+							QNA_LIST 
+		SET 
+							QNA_COMMENT = NULL 
+		WHERE 
+							QNA_NO = #{qna_no }
+	</update>
 </mapper>

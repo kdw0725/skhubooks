@@ -49,4 +49,10 @@ public class qnaController {
 		return service.commentInsert(qnavo);
 	}
 	
+	@RequestMapping(value="/qna/commentDelete", method = RequestMethod.GET)
+	public String commentDelete(int qna_no) throws Exception {
+		System.out.println(qna_no);
+		service.commentDelete(qna_no);
+		return "redirect:/qna/qnaList";
+	}
 }

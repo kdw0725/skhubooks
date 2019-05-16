@@ -40,4 +40,9 @@ public class qnaDAOImpl implements qnaDAO{
 		return sqlSession.update(namespace+".commentInsert", qnavo);
 	}
 
+	@Override
+	public int commentDelete(int qna_no) throws Exception {
+		return sqlSession.update(namespace+".commentDelete", qna_no);
+	}
+
 }
