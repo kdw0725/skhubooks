@@ -42,4 +42,11 @@ public class qnaController {
 	public int qnaUpdate(qnaVO qnavo, String qna_content) throws Exception{
 		return service.qnaUpdate(qnavo);
 	}
+	
+	@RequestMapping(value="/qna/commentInsert", method = RequestMethod.POST)
+	@ResponseBody
+	public int commentInsert(qnaVO qnavo) throws Exception{
+		return service.commentInsert(qnavo);
+	}
+	
 }

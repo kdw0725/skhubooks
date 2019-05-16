@@ -47,7 +47,16 @@
 		SET 
 							QNA_CONTENT = #{qna_content}
 		WHERE 
-							QNA_NO = #{qna_no};
+							QNA_NO = #{qna_no}
+	</update>
+	
+	<update id="commentInsert" parameterType="qnaVO">
+		UPDATE 
+							QNA_LIST 
+		SET 
+							QNA_COMMENT = #{qna_comment} 
+		WHERE 
+							QNA_NO = #{qna_no}
 	</update>
 	
 </mapper>

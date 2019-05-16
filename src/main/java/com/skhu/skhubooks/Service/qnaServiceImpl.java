@@ -32,5 +32,10 @@ public class qnaServiceImpl implements qnaService{
 	public int qnaUpdate(qnaVO qnavo) throws Exception {
 		return dao.qnaUpdate(qnavo);
 	}
+
+	@Override
+	public int commentInsert(qnaVO qnavo) throws Exception {
+		return dao.commentInsert(qnavo);
+	}
 	
 }
