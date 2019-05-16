@@ -11,5 +11,6 @@ public interface qnaDAO {
 	public int qnaUpdate(qnaVO qnavo) throws Exception;
 	public int commentInsert(qnaVO qnavo) throws Exception;
 	public int commentDelete(int qna_no) throws Exception;
+	public int commentUpdate(qnaVO qnavo) throws Exception;
 	
 }

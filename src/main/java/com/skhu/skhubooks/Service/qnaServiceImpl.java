@@ -42,5 +42,10 @@ public class qnaServiceImpl implements qnaService{
 	public int commentDelete(int qna_no) throws Exception {
 		return dao.commentDelete(qna_no);
 	}
+
+	@Override
+	public int commentUpdate(qnaVO qnavo) throws Exception {
+		return dao.commentUpdate(qnavo);
+	}
 	
 }
