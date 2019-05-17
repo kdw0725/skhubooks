@@ -60,4 +60,9 @@ public class qnaController {
 	public int commentUpdate(qnaVO qnavo) throws Exception{
 		return service.commentUpdate(qnavo);
 	}
+	
+	@RequestMapping(value="/qna/fna", method = RequestMethod.GET)
+	public String fna() throws Exception{
+		return "/qna/fna";
+	}
 }

@@ -2313,7 +2313,7 @@ span.stButton_gradient,
 }
 
 .bg-404 {
-  background-image: url("../images/home/tour-bg.png");
+  background-image: url("/SKHUBooks/bootstrap/images/home/tour-bg.png");
   background-repeat: repeat-x;
   background-position: center top;
 }
@@ -2682,4 +2682,8 @@ span.stButton_gradient,
   -webkit-box-shadow: 0 0 0 5px rgba(0,0,0,.1) inset;
   border-radius: 100%;
   margin: 10px 0;
+}
+
+.tableth{
+	width : 100px;
 }

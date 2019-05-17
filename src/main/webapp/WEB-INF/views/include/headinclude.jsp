@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
 	<link rel="stylesheet" href="/SKHUBooks/resources/bootstrap/css/animate.min.css">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html"><h3><b><x>Home</x></b></h3></a></li>
+                        <li class="active"><a href="/SKHUBooks/"><h3><b><x>Home</x></b></h3></a></li>
 
                         <li><a href="#"><h3><p><b>자료 검색</b></p></h3></a></li>
 
@@ -71,9 +71,9 @@
 
                         <li class="dropdown"><a href="shortcodes.html "><h3><b><p>게시판<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
-                              <li><a href="board.html">자유게시판</a></li>
+                              <li><a href="/SKHUBooks/board/boardList">자유게시판</a></li>
                               <li><a href="/SKHUBooks/qna/qnaList">Q & A</a></li>
-                              <li><a href="blogone.html">F & A</a></li>
+                              <li><a href="/SKHUBooks/qna/fna">자주 하는 질문</a></li>
                           </ul></li>
 
                     </ul>

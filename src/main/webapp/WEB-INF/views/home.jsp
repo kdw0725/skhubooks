@@ -13,13 +13,8 @@
 	<title>Home</title>
 </head>
 <body>
-<div class="container">
-	<h1>
-		Hello world!  
-	</h1>
-</div>
-<h2><a href="board/boardList">boardList</a></h2>
-<h2><a href="qna/qnaList">qnaList</a></h2>
+<h1 class="title"><b>Main</b></h1>
+<%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
 <sec:authorize access="isAnonymous()">
     <h5><a href='<c:url value="/member/logIn"/>'>LOGIN</a></h5>
 </sec:authorize>

@@ -10,34 +10,45 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<form action="boardInsertDo">
-		<table border =1px>
-			<tr>
-				<td>제목</td>
-				<td><input type="text" name="board_title"></td>
-			</tr>
-			<tr>
-				<td>작성자</td>
-				<td><input type="text" name="board_writer" readonly="readonly" value="<sec:authentication property="principal.username"/>"></td>
-			</tr>
-			
-			<tr>
-				<td>내용</td>
-				<td><textarea name="board_content" id="editor" style="width: 1100px; height: 205px;" required="required"></textarea></td>
-			</tr>
-			<tr>
-				<td>파일</td>
-				<td>
-					<input type="text" name="file">
-					<input type="button" value="첨부">
-				</td>
-			</tr>
-			
-		</table>
-		<input type="submit">
-		<input type="reset">
-	</form>
-
+<h1 class="title"><b>자유 게시판</b></h1>
+<p>skhubooks 자유게시판 입니다.</p>
+<%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
+<br><br>
+	<div class="container">
+		<form action="boardInsertDo" encType="multiplart/form-data">
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th style=" width: 100px; text-align: center;vertical-align: middle;">제목</th>
+						<td>
+							<input type="text" name="board_title" class="form-control" placeholder="제목을 입력하세요." required="required">
+						</td>
+					</tr>
+					<tr>
+						<th style=" width: 100px; text-align: center;vertical-align: middle;">작성자</th>
+						<td><input class="form-control" type="text" name="board_writer" readonly="readonly" value="<sec:authentication property="principal.username"/>"></td>
+					</tr>
+					<tr>
+						<th style=" width: 100px; text-align: center;vertical-align: middle;">내용</th>
+						<td><textarea class="form-control" name="board_content" id="editor" style="height: 205px;" required="required"></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" class="btn btn-default pull-rigth">
+							<input type="reset" class="btn btn-default pull-rigth">	
+							<input type="button" value="글 목록" class="btn btn-default pull-right" onclick="gotoHome()">
+						</td>	
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
 </body>
+<script>
+function gotoHome(){
+	if(confirm("작성을 취소하시겠습니까?")){
+		location.href = "/SKHUBooks/board/boardList";
+	}
+}
+</script>
 </html>

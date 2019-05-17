@@ -10,9 +10,11 @@
 <title>boardList</title>
 </head>
 <body>
-
-
-<table border=1px>
+<h1 class="title"><b>자유 게시판</b></h1>
+<p>skhubooks 자유게시판 입니다.</p>
+<%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
+<div class="container">
+	<table class="table table-striped">
 		<tr>
 			<th>NO</th>
 			<th style="text-align: center">제목</th>
@@ -32,8 +34,18 @@
 		
 	</table>
 	
-	<input type="button" onclick="boardInsert()" value="글쓰기">
-
+	<input class="btn btn-default pull-rigth" type="button" onclick="boardInsert()" value="글쓰기">
+	
+	<div class="text-center">
+     <ul class="pagination">
+       <li><a href="#">1</a></li>
+       <li><a href="#">2</a></li>
+       <li><a href="#">3</a></li>
+       <li><a href="#">4</a></li>
+       <li><a href="#">5</a></li>
+     </ul>
+   </div>
+</div>
 </body>
 
 <script>

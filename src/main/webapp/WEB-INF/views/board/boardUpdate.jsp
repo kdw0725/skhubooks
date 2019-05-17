@@ -9,7 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1 class="title"><b>자유 게시판</b></h1>
+<p>skhubooks 자유게시판 입니다.</p>
+<%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
 	<form action="boardUpdateDo">
 	<input type="hidden" value="${list.board_no }" name="board_no">
 		<table border="1px">

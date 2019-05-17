@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<%@ include file="/WEB-INF/views/include/headinclude.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-
+	<h1 class="title"><b>Q & A</b></h1>
+	<%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
 	<form action="qnaInsert">
 		<textarea name="qna_content" id="editor" style="width: 1100px; height: 205px;" required="required"></textarea>
 		<br>
