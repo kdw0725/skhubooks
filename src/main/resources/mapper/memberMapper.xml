@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skhu.skhubooks.memberMapper">
+	<insert id='memberSignIn' parameterType='memberVO'>
+		INSERT 
+		INTO 
+							MEMBER(
+							MEMBER_NAME, 
+							MEMBER_ID, 
+							MEMBER_PW, 
+							MEMBER_BIRTH, 
+							MEMBER_PNUM) 
+		VALUES
+							(
+							#{ member_name},
+							#{ member_id},
+							#{ member_pw},
+							#{ member_birth},
+							#{ member_pnum}
+							)
+	</insert>
+	
+	<select id="selectUserById" resultType="memberVO">
+		<![CDATA[
+            SELECT
+            				*
+            FROM
+            				MEMBER
+            WHERE
+            				MEMBER_ID=#{ member_id}
+        ]]>
+	</select>
+	
+	<select id="selectUserID" parameterType="String" resultType="Integer">
+			SELECT
+							COUNT(MEMBER_ID) AS RESULT
+			FROM
+							MEMBER
+			WHERE
+							MEMBER_ID = #{member_id}
+	</select>
+	
+</mapper>

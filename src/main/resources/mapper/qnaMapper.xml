@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skhu.skhubooks.qnaMapper">
+	<select id="qnaList" resultType="qnaVO">
+		SELECT
+							QNA_NO,
+							QNA_WRITER,
+							QNA_CONTENT,
+							QNA_INSERTDATE,
+							QNA_COMMENT
+		FROM
+							QNA_LIST
+		ORDER BY
+							QNA_NO DESC
+	</select>
+	
+	<insert id="qnaInsert" parameterType="qnaVO">
+		INSERT 
+		INTO 
+							QNA_LIST
+							(
+							QNA_WRITER, 
+							QNA_CONTENT
+							) 
+		VALUES 
+							(
+							#{qna_writer},
+							#{qna_content}
+							)
+		
+	</insert>
+	
+	<delete id="qnaDelete" parameterType="Integer">
+		DELETE 
+		FROM 
+							QNA_LIST 
+		WHERE 
+							QNA_NO = #{qna_no}
+		
+	</delete>
+	
+	<update id="qnaUpdate" parameterType="qnaVO">
+		UPDATE 
+							QNA_LIST 
+		SET 
+							QNA_CONTENT = #{qna_content}
+		WHERE 
+							QNA_NO = #{qna_no}
+	</update>
+	
+	<update id="commentInsert" parameterType="qnaVO">
+		UPDATE 
+							QNA_LIST 
+		SET 
+							QNA_COMMENT = #{qna_comment} 
+		WHERE 
+							QNA_NO = #{qna_no}
+	</update>
+	
+	<update id="commentDelete" parameterType="Integer">
+		UPDATE 
+							QNA_LIST 
+		SET 
+							QNA_COMMENT = NULL 
+		WHERE 
+							QNA_NO = #{qna_no }
+	</update>
+	
+	<update id="commentUpdate" parameterType="qnaVO">
+		UPDATE 
+							QNA_LIST 
+		SET 
+							QNA_COMMENT = #{qna_comment} 
+		WHERE 
+							QNA_NO = #{qna_no}
+	</update>
+</mapper>
