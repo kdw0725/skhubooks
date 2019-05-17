@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.4/dist/css/bootstrap.min.css">
 <script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.4/dist/js/bootstrap.min.js"></script>
+<%@ include file="/WEB-INF/views/include/headinclude.jsp"%>	
 
 <html>
 <head>

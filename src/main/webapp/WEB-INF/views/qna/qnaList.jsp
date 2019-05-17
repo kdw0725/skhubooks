@@ -78,7 +78,6 @@
 </body>
 
 <script>
-
 function qnaUpdate(qna_no, qna_content){
 	$("#qnaContent"+qna_no).html('	<textarea name="qna_content" id="qna_editor" style="width: 300px; height: 100px;" required="required">'+qna_content+'</textarea>\
 									<br>\
@@ -94,9 +93,6 @@ function qnaDelete(qna_no){
    if(confirm("질문을 삭제하시겠습니까?")){
 	   location.href="/SKHUBooks/qna/qnaDelete?qna_no="+qna_no;
    }
-}
-function asdf(){
-	alert('aaaaa');
 }
 
 function fn_qnaUpdate(qna_no){
@@ -129,6 +125,7 @@ function fn_qnaUpdate(qna_no){
 		});
 	};
 }
+
 function fn_qnaUpdateCancel(qna_no, qna_content){
 	$("#qnaContent"+qna_no).html(qna_content);
 	$("#qnaInfo").show();
@@ -144,9 +141,11 @@ function insertComment(qna_no){
 						       ');
 	$("#qnaInfo").hide();	
 }
+
 function commentCancel(qna_no){
 	$("#comment"+qna_no).html('<a onclick="insertComment('+qna_no+')">답글달기</a>');
 }
+
 function commentInsert(qna_no){
 	var qna_comment = $("#qna_editor").val();
 	var qnaData = {"qna_comment" : qna_comment,
@@ -174,7 +173,6 @@ function commentInsert(qna_no){
 											');
 				$("#qnaInfo").show();
 				$("#commentBtn").show();
-
 			},
 			error : function(error){
 				alert("서버가 응답하지 않습니다. \n다시 시도해 주시기 바랍니다.");
@@ -208,7 +206,6 @@ function commentUpdateCancel(qna_no,qna_comment){
 									<a onclick="commentDelete('+qna_no+')">삭제</a>\
 								');
 }
-
 function commentUpdateDo(qna_no, qna_comment){
 	var qna_comment = $("#qna_editor").val();
 	var qnaData = {"qna_comment" : qna_comment,

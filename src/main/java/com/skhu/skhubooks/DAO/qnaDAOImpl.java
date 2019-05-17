@@ -49,5 +49,4 @@ public class qnaDAOImpl implements qnaDAO{
 	public int commentUpdate(qnaVO qnavo) throws Exception {
 		return sqlSession.update(namespace+".commentUpdate", qnavo);
 	}
-
 }
