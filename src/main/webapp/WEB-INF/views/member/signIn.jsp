@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ include file="/WEB-INF/views/include/headinclude.jsp"%>	
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -8,38 +10,86 @@
 <title>회원가입</title>
 </head>
 <body>
-	<form action="signInDo ">
-		<p>이름</p>
-		<input type="text" name="member_name">
-		<p>아이디</p>
-		<input type="text" name="member_id" id="member_id">
-		<button type="button" class="idCheck" id="idCheck">중복 확인</button>
-		<span class="msg">아이디를 확인해주세요.</span>
-		<p>비밀번호</p>
-		<input type="password" name="member_pw">
-		<p>비밀번호 확인</p>
-		<input type="password" name="member_pw_check">
-		<p>생년월일</p>
-		<input type="text" name="member_birth" placeholder="ex)950725">
-		<p>전화번호</p>
-		<input type="tel" name="member_pnum" placeholder="ex)01083356191"><br><br>
-		<input type="submit" value="회원가입" >
-		<input type="reset" value="재작성">
-	</form>
+<h1 class="title"><b>회원가입</b></h1>
+<%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
+<article class="container">
+        <div class="page-header">
+            <div class="col-md-6 col-md-offset-3">
+              <br></br>
+
+            <br></br>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-offset-3">
+            <form role="form" action = "signInDo">
+                <div class="form-group">
+                    <label for="inputName">성명</label>
+                    <input type="text" name = "member_name" class="form-control" id="inputName" placeholder="이름을 입력해 주세요">
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">아이디</label>
+                    <input type="text" name="member_id" class="form-control" id="InputId" placeholder="아이디를 입력해주세요"><input type="button" value="중복확인" class="pull-right" id="pull-right">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">비밀번호</label>
+                    <input type="password" name = "member_pw" class="form-control" id="inputPassword" placeholder="비밀번호를 입력해주세요">
+                </div>
+                <div class="form-group">
+                    <label for="inputPasswordCheck">비밀번호 확인</label>
+                    <input type="password" name="member_pw_check" class="form-control" id="inputPasswordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
+                    <div class="form-group">
+                        <label for="inputtelBIRTH">생년월일</label>
+                        <input type="tel" name="member_birth" class="form-control" id="inputtelBIRTH" placeholder="생년월일를 6자리로 입력해 주세요">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputMobile">휴대폰 번호</label>
+                    <input type="tel" name="member_pnum" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해 주세요">
+                </div>
+
+
+                <div class="form-group">
+                <label>약관 동의</label>
+                <div data-toggle="buttons">
+                <label class="btn btn-primary active">
+                <span class="fa fa-check"></span>
+                <input id="agree" type="checkbox" autocomplete="off" checked>
+                </label>
+                <a href="#">이용약관</a>에 동의합니다.
+                </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" id="join-submit" class="btn btn-primary">
+                      	  회원가입<i class="fa fa-check spaceLeft"></i>
+                    </button>
+                    <button type="button" class="btn btn-warning" onclick="gotoHome()">
+                       	 가입취소<i class="fa fa-times spaceLeft"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </article>
 	
 
 </body>
 
 <script>
 $(document).ready(function(){
-	$("#idCheck").unbind("click").click(function(e){
+	$("#pull-right").unbind("click").click(function(e){
 		e.preventDefault();
 		fn_userIdCheck();
 	});
 });
+function gotoHome(){
+	if(confirm("취소하시겠습니까?")){
+		location.href="/SKHUBooks/";
+	}
+}
 
 function fn_userIdCheck(){
-	var member_id = $("#member_id").val();
+	var member_id = $("#InputId").val();
 	var memberData = {"member_id" : member_id};
 	
 	if(member_id.length < 1){
