@@ -19,17 +19,21 @@
 			<table class="table table-bordered">
 				<tbody>
 					<tr>
-						<th style=" width: 100px; text-align: center;vertical-align: middle;">제목</th>
+						<th style=" width: 100px; text-align: center;vertical-align: middle;">제&nbsp;&nbsp;목</th>
 						<td>
 							<input type="text" name="board_title" class="form-control" placeholder="제목을 입력하세요." required="required">
 						</td>
 					</tr>
 					<tr>
 						<th style=" width: 100px; text-align: center;vertical-align: middle;">작성자</th>
-						<td><input class="form-control" type="text" name="board_writer" readonly="readonly" value="<sec:authentication property="principal.username"/>"></td>
+						<td class="form-control">
+							<sec:authentication property="principal.username"/>
+							<input class="form-control" type="hidden" name="board_writer" readonly="readonly" value="<sec:authentication property="principal.username"/>">
+						</td>
+						
 					</tr>
 					<tr>
-						<th style=" width: 100px; text-align: center;vertical-align: middle;">내용</th>
+						<th style=" width: 100px; text-align: center;vertical-align: middle;">내&nbsp;&nbsp;용</th>
 						<td><textarea class="form-control" name="board_content" id="editor" style="height: 205px;" required="required"></textarea></td>
 					</tr>
 					<tr>
@@ -46,9 +50,7 @@
 </body>
 <script>
 function gotoHome(){
-	if(confirm("작성을 취소하시겠습니까?")){
-		location.href = "/SKHUBooks/board/boardList";
-	}
+	location.href = "/SKHUBooks/board/boardList";
 }
 </script>
 </html>
