@@ -43,10 +43,10 @@ public class qnaController {
 		return service.qnaUpdate(qnavo);
 	}
 	
-	@RequestMapping(value="/qna/commentInsert", method = RequestMethod.POST)
-	@ResponseBody
-	public int commentInsert(qnaVO qnavo) throws Exception{
-		return service.commentInsert(qnavo);
+	@RequestMapping(value="/qna/commentInsert", method = RequestMethod.GET)
+	public String commentInsert(qnaVO qnavo) throws Exception{
+		service.commentInsert(qnavo);
+		return "redirect:/qna/qnaList";
 	}
 	
 	@RequestMapping(value="/qna/commentDelete", method = RequestMethod.GET)
@@ -59,5 +59,10 @@ public class qnaController {
 	@ResponseBody
 	public int commentUpdate(qnaVO qnavo) throws Exception{
 		return service.commentUpdate(qnavo);
+	}
+	
+	@RequestMapping(value="/qna/fna", method = RequestMethod.GET)
+	public String fna() throws Exception{
+		return "/qna/fna";
 	}
 }
