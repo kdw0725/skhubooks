@@ -12,7 +12,7 @@
 <h1 class="title"><b>자유 게시판</b></h1>
 <p>skhubooks 자유게시판 입니다.</p>
 <%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
-<br><br>
+<br><br><br><br>
 	<div class="container">
 		<table border = 1px class="table table-bordered">
 			<tbody>
@@ -20,9 +20,13 @@
 					<th style=" width: 100px; text-align: center;vertical-align: middle;">제&nbsp;&nbsp;목</th>
 					<td class="form-control">${list.board_title }</td>
 				</tr>
-				<tr>
+				<tr >
 					<th style=" width: 100px; text-align: center;vertical-align: middle;">작성자</th>
-					<td class="form-control">${list.board_writer }</td>
+					<td class="form-control" colspan = "2">${list.board_writer } </td>
+				</tr>
+				<tr >
+					<th style=" width: 100px; text-align: center;vertical-align: middle;">작성일</th>
+					<td class="form-control" colspan = "2">${list.board_insertdate } </td>
 				</tr>
 				<tr>
 					<th style=" width: 100px; text-align: center;vertical-align: middle;">내&nbsp;&nbsp;용</th>

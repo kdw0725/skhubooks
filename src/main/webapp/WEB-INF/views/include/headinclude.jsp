@@ -12,6 +12,7 @@
 		p{color: gray;}
 		g{color: green;}
 		x{color: #a1d19b;}
+		black{color: black;}
 	</style>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

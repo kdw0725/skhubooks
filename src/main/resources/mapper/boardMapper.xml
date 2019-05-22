@@ -9,7 +9,7 @@
                             BOARD_NO,
                             BOARD_TITLE,
                             BOARD_CONTENT,
-	        	            DATE_ADD(BOARD_INSERTDATE, INTERVAL 9 HOUR) AS BOARD_INSERTDATE,
+	        	            DATE_FORMAT(DATE_ADD(BOARD_INSERTDATE, INTERVAL 9 HOUR), '%Y-%m-%d') AS BOARD_INSERTDATE,
                             BOARD_WRITER
         FROM 
                             BOARD_LIST,
@@ -37,7 +37,8 @@
 							BOARD_NO,
 							BOARD_WRITER, 
 							BOARD_TITLE, 
-							BOARD_CONTENT 
+							BOARD_CONTENT,
+							DATE_ADD(BOARD_INSERTDATE, INTERVAL 9 HOUR) AS BOARD_INSERTDATE
 	FROM 
 							BOARD_LIST 
 	WHERE 

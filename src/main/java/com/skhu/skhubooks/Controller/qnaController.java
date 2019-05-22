@@ -43,10 +43,10 @@ public class qnaController {
 		return service.qnaUpdate(qnavo);
 	}
 	
-	@RequestMapping(value="/qna/commentInsert", method = RequestMethod.POST)
-	@ResponseBody
-	public int commentInsert(qnaVO qnavo) throws Exception{
-		return service.commentInsert(qnavo);
+	@RequestMapping(value="/qna/commentInsert", method = RequestMethod.GET)
+	public String commentInsert(qnaVO qnavo) throws Exception{
+		service.commentInsert(qnavo);
+		return "redirect:/qna/qnaList";
 	}
 	
 	@RequestMapping(value="/qna/commentDelete", method = RequestMethod.GET)

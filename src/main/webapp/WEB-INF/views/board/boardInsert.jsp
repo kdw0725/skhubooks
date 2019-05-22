@@ -13,7 +13,7 @@
 <h1 class="title"><b>자유 게시판</b></h1>
 <p>skhubooks 자유게시판 입니다.</p>
 <%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
-<br><br>
+<br><br><br><br>
 	<div class="container">
 		<form action="boardInsertDo" encType="multiplart/form-data">
 			<table class="table table-bordered">
