@@ -57,7 +57,7 @@
 						<c:if test="${list.qna_comment == null }">
 							<sec:authorize access="hasRole('ROLE_ADMIN')">
 								<td>
-									<div class = "contentBtn${list.qna_no }">
+									<div id = "contentBtn${list.qna_no }">
 										<input type="button" value="답변" onclick="insertComment(${list.qna_no })" class="btn btn-default pull-right">
 										<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">
 										<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(${list.qna_no})">
@@ -68,7 +68,7 @@
 						<c:if test="${list.qna_comment != null }">
 							<sec:authorize access="hasRole('ROLE_ADMIN')">
 								<td>
-									<div class="contentBtn${list.qna_no }">
+									<div id="contentBtn${list.qna_no }">
 										<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">
 										<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(${list.qna_no})">
 									</div>
@@ -79,7 +79,7 @@
 						<sec:authentication property='principal.username' var="logInID"/>
 						<c:if test="${logInID == list.qna_writer }">
 							<td>
-								<div class="contentBtn${list.qna_no }">
+								<div id="contentBtn${list.qna_no }">
 									<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">
 									<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(${list.qna_no})">
 								</div>
@@ -90,7 +90,7 @@
 					<tr id="comment${list.qna_no }">
 						<td colspan="4" style="padding : 15px;">　└　Re: ${list.qna_comment }</td>
 						<td>
-							<div class="commentBtn${list.qna_no }">
+							<div id="commentBtn${list.qna_no }">
 		         				<input type="button" value="수정" class="btn btn-default pull-right" onclick="commentUpdate('${list.qna_no}','${list.qna_comment }')">
 		         				<input type="button" value="삭제" class="btn btn-default pull-right" onclick="commentDelete(${list.qna_no})">
          				  	</div>
@@ -112,7 +112,8 @@
 
 <script>
 function qnaUpdate(qna_no, qna_content){
-	$("#qnaContent"+qna_no).html('	<textarea name="qna_content" id="qna_editor" style="width: 100%; height: 100px;" required="required">'+qna_content+'</textarea>\
+	$("#qnaContent"+qna_no).html('	\
+									<textarea name="qna_content" id="qna_editor" style="width: 100%; height: 100px;" required="required">'+qna_content+'</textarea>\
 									<br><hr>\
 									<input type="hidden" name = "qna_no" value="'+qna_no+'">\
 									<input type="hidden" name="qna_writer" readonly="readonly" value="<sec:authentication property='principal.username'/>">\
@@ -125,6 +126,10 @@ function qnaDelete(qna_no){
    if(confirm("질문을 삭제하시겠습니까?")){
 	   location.href="/SKHUBooks/qna/qnaDelete?qna_no="+qna_no;
    }
+}
+
+function asdf(){
+	alert('aaaaa');
 }
 
 function fn_qnaUpdate(qna_no){
@@ -149,7 +154,10 @@ function fn_qnaUpdate(qna_no){
 			success : function(Result){
 				alert("수정이 완료되었습니다.");
 				$("#qnaContent"+qna_no).html(qna_content);
-				$("#contentBtn"+qna_no).html('sdf');
+				$("#contentBtn"+qna_no).html('  \
+												<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate(\''+qna_no+'\',\''+qna_content+'\')")">\
+												<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(+qna_no+)">\
+												');
 			},
 			error : function(error){
 				alert("서버가 응답하지 않습니다. \n다시 시도해 주시기 바랍니다.");
@@ -163,63 +171,31 @@ function fn_qnaUpdateCancel(qna_no, qna_content){
 }
 
 function insertComment(qna_no){
-	$("#comment"+qna_no).html('<td colspan="2"><form action="commentInsert">\
-							   <textarea name="qna_comment" id="qna_editor" style="width: 100%; height: 100px;" required="required"></textarea>\
-						       <br><hr>\
-						       <input type="hidden" name = "qna_no" value="'+qna_no+'">\
-						       <input type="hidden" name="qna_writer" readonly="readonly" value="<sec:authentication property='principal.username'/>">\
-						       <button class="btn btn-default pull-left" type="submit">답글 등록</button>\
-						       <button class="btn btn-default pull-left" onclick = "commentCancel('+qna_no+')">등록 취소</button>\
-						       </form></td>\
+	$("#comment"+qna_no).html('\
+								<td colspan="2"><form action="commentInsert">\
+								<textarea name="qna_comment" id="qna_editor" style="width: 100%; height: 100px;" required="required"></textarea>\
+							    <br><hr>\
+							    <input type="hidden" name = "qna_no" value="'+qna_no+'">\
+							    <input type="hidden" name="qna_writer" readonly="readonly" value="<sec:authentication property='principal.username'/>">\
+							    <button class="btn btn-default pull-left" type="submit">답글 등록</button>\
+							    <button class="btn btn-default pull-left" onclick = "commentCancel('+qna_no+')">등록 취소</button>\
+							    </form></td>\
 						       ');
 }
 
 function commentCancel(qna_no){
 	$("#comment"+qna_no).html('');
 }
-// function commentInsert(qna_no){
-// 	var qna_comment = $("#qna_editor").val();
-// 	var qnaData = {"qna_comment" : qna_comment,
-// 			   	   "qna_no" : qna_no
-// 				  };
-// 	if(qna_comment.length < 1){
-// 		alert("내용을 입력하세요.");
-// 	}
-// 	else{
-// 		$.ajax({
-// 			type : "POST",
-// 			url : "/SKHUBooks/qna/commentInsert",
-// 			data : qnaData,
-// 			dataType : "json",
-// 			beforeSend : function(xhr){
-// 				//데이터 전송 전에 헤더에 csrf 값 설정
-//                 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-// 			},
-// 			success : function(Result){
-// 				alert('답글이 등록되었습니다.');
-// 				$("#comment"+qna_no).html('<td>└ '+qna_comment+'</td>\
-// 											<td id="commentBtn">\
-// 												<a onclick="commentUpdate(\''+qna_no+'\',\''+qna_comment+'\')">수정</a>\
-// 												<a onclick="commentDelete('+qna_no+')">삭제</a>\
-// 											');
-// 				$("#qnaInfo").show();
-// 				$("#commentBtn").show();
-// 			},
-// 			error : function(error){
-// 				alert("서버가 응답하지 않습니다. \n다시 시도해 주시기 바랍니다.");
-// 			}
-// 		});
-// 	};
-// }
->>>>>>> front
+
 function commentUpdate(qna_no, qna_comment){
-	$("#comment"+qna_no).html('<textarea name="qna_comment" id="qna_editor" style="width: 100%; height: 100px;" required="required">'+qna_comment+'</textarea>\
-									<br><hr>\
-									<input type="hidden" name = "qna_no" value="'+qna_no+'">\
-									<input type="hidden" name="qna_writer" readonly="readonly" value="<sec:authentication property='principal.username'/>">\
-									<button class="btn btn-default pull-left" onclick = "commentUpdateDo(\''+qna_no+'\',\''+qna_comment+'\')">답글 수정</button>\
-									<button class="btn btn-default pull-left" onclick = "commentUpdateCancel(\''+qna_no+'\',\''+qna_comment+'\')">수정 취소</button>\
-									');	
+	$("#comment"+qna_no).html('\
+								<textarea name="qna_comment" id="qna_editor" style="width: 100%; height: 100px;" required="required">'+qna_comment+'</textarea>\
+								<br><hr>\
+								<input type="hidden" name = "qna_no" value="'+qna_no+'">\
+								<input type="hidden" name="qna_writer" readonly="readonly" value="<sec:authentication property='principal.username'/>">\
+								<button class="btn btn-default pull-left" onclick = "commentUpdateDo(\''+qna_no+'\',\''+qna_comment+'\')">답글 수정</button>\
+								<button class="btn btn-default pull-left" onclick = "commentUpdateCancel(\''+qna_no+'\',\''+qna_comment+'\')">수정 취소</button>\
+								');	
  
 }
 
@@ -231,13 +207,15 @@ function commentDelete(qna_no){
 }
 
 function commentUpdateCancel(qna_no,qna_comment){
-	$("#comment"+qna_no).html('<td colspan="4">　└　Re:  '+qna_comment+'</td>\
+	$("#comment"+qna_no).html('\
+								<td colspan="4">　└　Re:  '+qna_comment+'</td>\
 								<td>\
 								<input type = "button" value="수정" class="btn btn-default pull-right" onclick="commentUpdate(\''+qna_no+'\',\''+qna_comment+'\')">\
 								<input type = "button" value="삭제" class="btn btn-default pull-right" onclick="commentDelete('+qna_no+')"  >\
 								</td>\
 								');
 }
+
 function commentUpdateDo(qna_no, qna_comment){
 	var qna_comment = $("#qna_editor").val();
 	var qnaData = {"qna_comment" : qna_comment,
@@ -258,7 +236,8 @@ function commentUpdateDo(qna_no, qna_comment){
 			},
 			success : function(Result){
 				alert("수정이 완료되었습니다.");
-				$("#comment"+qna_no).html(' <td colspan="4">　└　Re:  '+qna_comment+'</td>\
+				$("#comment"+qna_no).html(' \
+											<td colspan="4">　└　Re:  '+qna_comment+'</td>\
 											<td>\
 											<input type = "button" value="수정" class="btn btn-default pull-right" onclick="commentUpdate(\''+qna_no+'\',\''+qna_comment+'\')">\
 											<input type = "button" value="삭제" class="btn btn-default pull-right" onclick="commentDelete('+qna_no+')"  >\
@@ -268,8 +247,8 @@ function commentUpdateDo(qna_no, qna_comment){
 			error : function(error){
 				alert("서버가 응답하지 않습니다. \n다시 시도해 주시기 바랍니다.");
 			}
-		})
-	}
+		});
+	};
 }
 </script>
 </html>
