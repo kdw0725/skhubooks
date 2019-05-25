@@ -14,6 +14,17 @@
 							QNA_LIST
 		ORDER BY
 							QNA_NO DESC
+		LIMIT 
+        					#{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="qnaTotalCount" resultType="Integer">
+		SELECT
+							COUNT(QNA_NO)
+		FROM	
+							QNA_LIST
+		WHERE
+							QNA_NO > 0
 	</select>
 	
 	<insert id="qnaInsert" parameterType="qnaVO">

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skhu.skhubooks.Service.qnaService;
+import com.skhu.skhubooks.VO.Criteria;
+import com.skhu.skhubooks.VO.PageMaker;
 import com.skhu.skhubooks.VO.qnaVO;
 
 @Controller
@@ -18,10 +20,14 @@ public class qnaController {
 	qnaService service;
 	
 	@RequestMapping(value = "/qna/qnaList", method = RequestMethod.GET)
-	public String qnaList(Model model)throws Exception{
+	public String qnaList(Model model, Criteria cri)throws Exception{
 		List<qnaVO> list;
-		list = service.qnaList();
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.qnaTotalCount());
+		list = service.qnaList(cri);
 		model.addAttribute("list", list);
+		model.addAttribute("pageMaker",pageMaker);
 		return "/qna/qnaList";
 	}
 	

@@ -1,7 +1,5 @@
 package com.skhu.skhubooks.Controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +17,11 @@ public class boardController {
 	boardService service;
 	
 	@RequestMapping(value = "/board/boardList", method = RequestMethod.GET)
-	public String boardList(Model model, Criteria cri)throws Exception{
-		List<boardVO> list;
+	public String boardList(Model model, Criteria cri, int page)throws Exception{
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.countBoardList());
-		list = service.boardList(cri);
-		model.addAttribute("list", list);
+		model.addAttribute("list",  service.boardList(cri));
 		model.addAttribute("pageMaker",pageMaker);
 		return "/board/boardList";
 	}

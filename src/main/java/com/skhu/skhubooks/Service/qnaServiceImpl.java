@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skhu.skhubooks.DAO.qnaDAO;
+import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.qnaVO;
 
 @Service
@@ -14,8 +15,8 @@ public class qnaServiceImpl implements qnaService{
 	private qnaDAO dao;
 
 	@Override
-	public List<qnaVO> qnaList() throws Exception {
-		return dao.qnaList();
+	public List<qnaVO> qnaList(Criteria cri) throws Exception {
+		return dao.qnaList(cri);
 	}
 
 	@Override
@@ -46,6 +47,11 @@ public class qnaServiceImpl implements qnaService{
 	@Override
 	public int commentUpdate(qnaVO qnavo) throws Exception {
 		return dao.commentUpdate(qnavo);
+	}
+
+	@Override
+	public int qnaTotalCount() throws Exception {
+		return dao.qnaTotalCount();
 	}
 	
 }

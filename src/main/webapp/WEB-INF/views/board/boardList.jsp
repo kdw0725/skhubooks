@@ -45,17 +45,18 @@
 				</li>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-			    <li>
-        			<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
-        			<c:choose>
-        				<c:when test="">
-        					
-        				</c:when>
-        				<c:otherwise>
-        				
-        				</c:otherwise>
-        			</c:choose>
-    			</li>
+				<c:choose>
+					<c:when test="${idx==pageMaker.cri.page }">
+						<li class="active">
+        					<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
+        				</li>
+					</c:when>
+					<c:otherwise>
+						<li>
+        					<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
     		</c:forEach>
 			<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
     			<li class="pagingRightBtn">

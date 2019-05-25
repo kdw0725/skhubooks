@@ -32,80 +32,108 @@
 	</div>
 	<br><br>
 	<div class="container">
-	<table class="table table-striped" style="width : 100%;">
-		<thead>
-			<tr>
-				<th colspan="2" style="width : 60%; font-size: 20px">Q & A</th>
-				<th style="font-size: 20px; text-align: center;">작성자</th>
-				<th style="font-size: 20px; text-align: center;">날짜</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="list" varStatus="i" items="${list}">
+		<table class="table table-striped" style="width : 100%;">
+			<thead>
 				<tr>
-					<td colspan="2" style=" padding : 20px;">
-						<black id="qnaContent${list.qna_no }">${list.qna_content }</black>
-					</td>
-					
-					<td style="text-align: center;" >
-						<input type="hidden" id = "qna_no" value=${list.qna_no }>
-						${list.qna_writer }
-					</td>
-					<td style="text-align: center;">
-							${list.qna_insertdate }
-					</td>
-						<c:if test="${list.qna_comment == null }">
-							<sec:authorize access="hasRole('ROLE_ADMIN')">
-								<td>
-									<div id = "contentBtn${list.qna_no }">
-										<input type="button" value="답변" onclick="insertComment(${list.qna_no })" class="btn btn-default pull-right">
-										<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">
-										<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(${list.qna_no})">
-									</div>
-								</td>
-							</sec:authorize>
-						</c:if>
-						<c:if test="${list.qna_comment != null }">
-							<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<th colspan="2" style="width : 60%; font-size: 20px">Q & A</th>
+					<th style="font-size: 20px; text-align: center;">작성자</th>
+					<th style="font-size: 20px; text-align: center;">날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="list" varStatus="i" items="${list}">
+					<tr>
+						<td colspan="2" style=" padding : 20px;">
+							<black id="qnaContent${list.qna_no }">${list.qna_content }</black>
+						</td>
+						
+						<td style="text-align: center;" >
+							<input type="hidden" id = "qna_no" value=${list.qna_no }>
+							${list.qna_writer }
+						</td>
+						<td style="text-align: center;">
+								${list.qna_insertdate }
+						</td>
+							<c:if test="${list.qna_comment == null }">
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<td>
+										<div id = "contentBtn${list.qna_no }">
+											<input type="button" value="답변" onclick="insertComment(${list.qna_no })" class="btn btn-default pull-right">
+											<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">
+											<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(${list.qna_no})">
+										</div>
+									</td>
+								</sec:authorize>
+							</c:if>
+							<c:if test="${list.qna_comment != null }">
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<td>
+										<div id="contentBtn${list.qna_no }">
+											<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">
+											<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(${list.qna_no})">
+										</div>
+									</td>
+								</sec:authorize>
+							</c:if>
+							
+							<sec:authentication property='principal.username' var="logInID"/>
+							<c:if test="${logInID == list.qna_writer }">
 								<td>
 									<div id="contentBtn${list.qna_no }">
 										<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">
 										<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(${list.qna_no})">
 									</div>
 								</td>
-							</sec:authorize>
-						</c:if>
-						
-						<sec:authentication property='principal.username' var="logInID"/>
-						<c:if test="${logInID == list.qna_writer }">
+							</c:if>
+					</tr>
+					<c:if test="${list.qna_comment != null }">
+						<tr id="comment${list.qna_no }">
+							<td colspan="4" style="padding : 15px;">　└　Re: ${list.qna_comment }</td>
 							<td>
-								<div id="contentBtn${list.qna_no }">
-									<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">
-									<input type="button" value="삭제" class="btn btn-default pull-right" onclick = "qnaDelete(${list.qna_no})">
-								</div>
+								<div id="commentBtn${list.qna_no }">
+			         				<input type="button" value="수정" class="btn btn-default pull-right" onclick="commentUpdate('${list.qna_no}','${list.qna_comment }')">
+			         				<input type="button" value="삭제" class="btn btn-default pull-right" onclick="commentDelete(${list.qna_no})">
+	         				  	</div>
 							</td>
-						</c:if>
-				</tr>
-				<c:if test="${list.qna_comment != null }">
-					<tr id="comment${list.qna_no }">
-						<td colspan="4" style="padding : 15px;">　└　Re: ${list.qna_comment }</td>
-						<td>
-							<div id="commentBtn${list.qna_no }">
-		         				<input type="button" value="수정" class="btn btn-default pull-right" onclick="commentUpdate('${list.qna_no}','${list.qna_comment }')">
-		         				<input type="button" value="삭제" class="btn btn-default pull-right" onclick="commentDelete(${list.qna_no})">
-         				  	</div>
-						</td>
-					</tr>
+						</tr>
+					</c:if>
+					<c:if test="${list.qna_comment == null }">
+						<tr id="comment${list.qna_no }">
+						</tr>
+						<tr id="asdf" style = "display: none">
+						</tr>
+					</c:if>
+				</c:forEach>
+			</tbody>
+		</table>
+		<div class="text-center">
+			<ul class="paging">
+				<c:if test="${pageMaker.prev }">
+					<li class="pagingLeftBtn">
+						<a href='<c:url value="/qna/qnaList?page=${pageMaker.startPage-1 }"/>'></a>
+					</li>
 				</c:if>
-				<c:if test="${list.qna_comment == null }">
-					<tr id="comment${list.qna_no }">
-					</tr>
-					<tr id="asdf" style = "display: none">
-					</tr>
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+					<c:choose>
+						<c:when test="${idx==pageMaker.cri.page }">
+						<li class="active">
+	        					<a href='<c:url value="/qna/qnaList?page=${idx }"/>'>${idx }</a>
+	        				</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+	        					<a href='<c:url value="/qna/qnaList?page=${idx }"/>'>${idx }</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+					<li class="pagingRightBtn">
+	        			<a href='<c:url value="/board/boardList?page=${pageMaker.endPage+1 }"/>'></a>
+	    			</li>
 				</c:if>
-			</c:forEach>
-		</tbody>
-	</table>
+			</ul>
+		</div>
 	</div>
 	
 </body>

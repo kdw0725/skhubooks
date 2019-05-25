@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.qnaVO;
 
 @Repository
@@ -16,8 +17,8 @@ public class qnaDAOImpl implements qnaDAO{
 	private SqlSession sqlSession;
 
 	@Override
-	public List<qnaVO> qnaList() throws Exception {
-		return sqlSession.selectList(namespace+".qnaList");
+	public List<qnaVO> qnaList(Criteria cri) throws Exception {
+		return sqlSession.selectList(namespace+".qnaList", cri);
 	}
 
 	@Override
@@ -48,5 +49,10 @@ public class qnaDAOImpl implements qnaDAO{
 	@Override
 	public int commentUpdate(qnaVO qnavo) throws Exception {
 		return sqlSession.update(namespace+".commentUpdate", qnavo);
+	}
+
+	@Override
+	public int qnaTotalCount() throws Exception {
+		return sqlSession.selectOne(namespace+".qnaTotalCount");
 	}
 }
