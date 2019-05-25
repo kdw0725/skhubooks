@@ -25,12 +25,12 @@
 		
 				
 		 <c:forEach var="list" varStatus="i" items="${list}">
-		 <tr>
+		 	<tr>
 		 		<th scope="row">${list.no }</th>
 				<td><a href="boardDetail?board_no=${list.board_no}">${list.board_title }</a></td>
 				<td>${list.board_writer }</td>
 				<td>${list.board_insertdate }</td>
-		</tr>
+			</tr>
 		</c:forEach>
 		
 	</table>
@@ -38,13 +38,31 @@
 	<input class="btn btn-default pull-rigth" type="button" onclick="boardInsert()" value="글쓰기">
 	
 	<div class="text-center">
-     <ul class="pagination">
-       <li><a href="#">1</a></li>
-       <li><a href="#">2</a></li>
-       <li><a href="#">3</a></li>
-       <li><a href="#">4</a></li>
-       <li><a href="#">5</a></li>
-     </ul>
+		<ul class="paging">
+			<c:if test="${pageMaker.prev }">
+				<li class="pagingLeftBtn">
+					<a href='<c:url value="/board/boardList?page=${pageMaker.startPage-1 }"/>'></a>
+				</li>
+			</c:if>
+			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+			    <li>
+        			<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
+        			<c:choose>
+        				<c:when test="">
+        					
+        				</c:when>
+        				<c:otherwise>
+        				
+        				</c:otherwise>
+        			</c:choose>
+    			</li>
+    		</c:forEach>
+			<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+    			<li class="pagingRightBtn">
+        			<a href='<c:url value="/board/boardList?page=${pageMaker.endPage+1 }"/>'></a>
+    			</li>
+    		</c:if>
+		</ul>
    </div>
 </div>
 </body>

@@ -2,12 +2,11 @@ package com.skhu.skhubooks.Service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skhu.skhubooks.DAO.boardDAO;
+import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.boardVO;
 
 @Service
@@ -16,8 +15,8 @@ public class boardServiceImpl implements boardService{
 	private boardDAO dao;
 
 	@Override
-	public List<boardVO> boardList() throws Exception {
-		return dao.boardList();
+	public List<boardVO> boardList(Criteria cri) throws Exception {
+		return dao.boardList(cri);
 	}
 
 	@Override
@@ -39,6 +38,12 @@ public class boardServiceImpl implements boardService{
 	public int boardUpdate(boardVO VO) throws Exception {
 		return dao.boardUpdate(VO);
 	}
+
+	@Override
+	public int countBoardList() throws Exception {
+		return dao.countBoardList();
+	}
+
 
 
 

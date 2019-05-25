@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skhu.skhubooks.Service.boardService;
+import com.skhu.skhubooks.VO.Criteria;
+import com.skhu.skhubooks.VO.PageMaker;
 import com.skhu.skhubooks.VO.boardVO;
 
 @Controller
@@ -17,10 +19,14 @@ public class boardController {
 	boardService service;
 	
 	@RequestMapping(value = "/board/boardList", method = RequestMethod.GET)
-	public String boardList(Model model)throws Exception{
+	public String boardList(Model model, Criteria cri)throws Exception{
 		List<boardVO> list;
-		list = service.boardList();
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.countBoardList());
+		list = service.boardList(cri);
 		model.addAttribute("list", list);
+		model.addAttribute("pageMaker",pageMaker);
 		return "/board/boardList";
 	}
 	
@@ -36,7 +42,7 @@ public class boardController {
 	}
 	
 	@RequestMapping(value = "/board/boardDetail", method = RequestMethod.GET)
-	public String boardDetail(Model model, boardVO boardvo)throws Exception{
+	public String boardDetail(Model model, boardVO boardvo, Criteria cri)throws Exception{
 		model.addAttribute("list",service.boardDetail(boardvo.getBoard_no()));
 		return "/board/boardDetail";
 	}
