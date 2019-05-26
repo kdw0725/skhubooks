@@ -13,6 +13,8 @@
 		g{color: green;}
 		x{color: #a1d19b;}
 		black{color: black;}
+		blue{color : blue;}
+		red{color : red;}
 	</style>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +61,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/SKHUBooks/"><h3><b><x>Home</x></b></h3></a></li>
 
-                        <li><a href="#"><h3><p><b>자료 검색</b></p></h3></a></li>
+                        <li><a href="/SKHUBooks/book/bookList"><h3><p><b>자료 검색</b></p></h3></a></li>
 
                         <li class="dropdown"><a href="blog.html"><h3><b><p>도서 관리<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
@@ -72,8 +74,8 @@
 
                         <li class="dropdown"><a href="shortcodes.html "><h3><b><p>게시판<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
-                              <li><a href="/SKHUBooks/board/boardList">자유게시판</a></li>
-                              <li><a href="/SKHUBooks/qna/qnaList">Q & A</a></li>
+                              <li><a href="/SKHUBooks/board/boardList?page=1">자유게시판</a></li>
+                              <li><a href="/SKHUBooks/qna/qnaList?page=1">Q & A</a></li>
                               <li><a href="/SKHUBooks/qna/fna">자주 하는 질문</a></li>
                           </ul></li>
 

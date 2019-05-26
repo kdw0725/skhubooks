@@ -116,7 +116,7 @@
 				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
 					<c:choose>
 						<c:when test="${idx==pageMaker.cri.page }">
-						<li class="active">
+							<li class="active">
 	        					<a href='<c:url value="/qna/qnaList?page=${idx }"/>'>${idx }</a>
 	        				</li>
 						</c:when>
@@ -129,7 +129,7 @@
 				</c:forEach>
 				<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 					<li class="pagingRightBtn">
-	        			<a href='<c:url value="/board/boardList?page=${pageMaker.endPage+1 }"/>'></a>
+	        			<a href='<c:url value="/qna/qnaList?page=${pageMaker.endPage+1 }"/>'></a>
 	    			</li>
 				</c:if>
 			</ul>

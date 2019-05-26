@@ -50,7 +50,7 @@
 </body>
 <script>
 function gotoHome(){
-	location.href = "/SKHUBooks/board/boardList";
+	location.href = "/SKHUBooks/board/boardList?page=1";
 }
 </script>
 </html>

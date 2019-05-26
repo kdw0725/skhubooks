@@ -2734,3 +2734,28 @@ span.stButton_gradient,
   -webkit-transition: 300ms;
   transition: 300ms;
 }
+
+.filebox input[type="file"]{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
+}
+
+.filebox label{
+	display: inline-block;
+	padding: .5em .75em;
+	vertical-align: middle;
+}
+
+.filebox .form-control{
+	width : 91.5%;
+	display: inline-block;
+	background-color: white;
+	vertical-align: middle;
+	border-radius: .25em;
+}

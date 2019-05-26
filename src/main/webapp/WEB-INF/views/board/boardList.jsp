@@ -48,12 +48,12 @@
 				<c:choose>
 					<c:when test="${idx==pageMaker.cri.page }">
 						<li class="active">
-        					<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
-        				</li>
+	        				<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
+	        			</li>
 					</c:when>
 					<c:otherwise>
 						<li>
-        					<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
+	        				<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
 						</li>
 					</c:otherwise>
 				</c:choose>

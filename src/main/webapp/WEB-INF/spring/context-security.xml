@@ -13,6 +13,8 @@
         <security:http auto-config="true" use-expressions="true">
         	<security:intercept-url pattern="/board/**" access="hasRole('ROLE_ADMIN')" />
         	<security:intercept-url pattern="/qna/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_GUEST')" />
+        	<security:intercept-url pattern="/book/bookInsert" access="hasRole('ROLE_ADMIN')"/>
+        	<security:intercept-url pattern="/book/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
         	<security:intercept-url pattern="/include/**" access="permitAll" />
         	<security:intercept-url pattern="/member/**" access="isAnonymous()" />
         	<security:intercept-url pattern="/checkMemberID" access = "permitAll"/>
@@ -39,7 +41,7 @@
         	<security:session-management invalid-session-url="/member/logIn">
         		<security:concurrency-control max-sessions="1" expired-url="/logIn" error-if-maximum-exceeded="true"/>
         	</security:session-management>
-        		
+        	<security:csrf disabled="true"/>
         </security:http>
          
         

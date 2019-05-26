@@ -3,7 +3,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skhu.skhubooks.boardMapper"><!-- 이거 수정해줘야된다 동욱아 -->
-	<select id='boardList' resultType="boardVO">
+	<select id='boardList' resultType="boardVO" parameterType="hashMap">
 		SELECT
                             @rownum:=@rownum+1 No,
                             BOARD_NO,

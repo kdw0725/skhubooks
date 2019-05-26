@@ -34,11 +34,11 @@ public class boardController {
 	@RequestMapping(value = "/board/boardInsertDo", method = RequestMethod.GET)
 	public String boardInsertDo(Model model, boardVO boardvo)throws Exception{
 		service.boardInsert(boardvo);
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?oage=1";
 	}
 	
 	@RequestMapping(value = "/board/boardDetail", method = RequestMethod.GET)
-	public String boardDetail(Model model, boardVO boardvo, Criteria cri)throws Exception{
+	public String boardDetail(Model model, boardVO boardvo)throws Exception{
 		model.addAttribute("list",service.boardDetail(boardvo.getBoard_no()));
 		return "/board/boardDetail";
 	}
@@ -46,7 +46,7 @@ public class boardController {
 	@RequestMapping(value = "/board/boardDelete", method = RequestMethod.GET)
 	public String boardDelete(Model model, boardVO boardvo)throws Exception{
 		service.boardDelete(boardvo.getBoard_no());
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?page=1";
 	}
 	
 	@RequestMapping(value = "/board/boardUpdate", method = RequestMethod.GET)
