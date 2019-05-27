@@ -8,6 +8,7 @@
 		<typeAlias alias="qnaVO" type="com.skhu.skhubooks.VO.qnaVO"/>
 		<typeAlias alias="memberVO" type="com.skhu.skhubooks.VO.CustomUserDetails"/>
 		<typeAlias alias="bookVO" type="com.skhu.skhubooks.VO.bookVO"/>
+		<typeAlias alias="fileVO" type="com.skhu.skhubooks.VO.fileVO"/>
 	</typeAliases>
 
 </configuration>

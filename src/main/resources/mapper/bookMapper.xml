@@ -3,15 +3,20 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skhu.skhubooks.bookMapper"><!-- 이거 수정해줘야된다 동욱아 -->
-	<select id="selectBook" resultType="bookVO" parameterType="hashMap">
+	<select id="selectBook" resultType="hashMap" parameterType="hashMap">
 		SELECT 
-							BOOK_NO,
-							BOOK_NAME, 
-							BOOK_AUTHOR, 
-							BOOK_PUBLISHER, 
-							BOOK_LOAN 
+							A.BOOK_NO,
+							A.BOOK_NAME, 
+							A.BOOK_AUTHOR, 
+							A.BOOK_PUBLISHER, 
+							A.BOOK_LOAN,
+							B.FILE_NAME 
 		FROM 
-							BOOK 
+							BOOK A
+		INNER JOIN
+							FILE B
+		ON
+							A.BOOK_NO = B.BOOK_NO
 		WHERE 
 							BOOK_NAME IS NOT NULL
 		LIMIT
@@ -42,5 +47,23 @@
 							#{book_author},
 							#{book_publisher}
 							)
+	</insert>
+	
+	<insert id="insertFile" parameterType="fileVO">
+		INSERT
+		INTO
+							FILE(
+							BOOK_NO,
+							FILE_NAME,
+							FILE_ORI_NAME,
+							FILE_URL
+							)
+		VALUES
+							(
+							#{book_no},
+                            #{file_name},
+                            #{file_ori_name},
+                            #{file_url}
+                            )
 	</insert>
 </mapper>

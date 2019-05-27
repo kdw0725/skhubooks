@@ -21,8 +21,8 @@
 	<div class="container">
 		<table class="table table-striped" style="text-align: center">
 			<tr>
-				<th style="text-align: center;">사진</th>
-				<th style="text-align: center; width : 50%;">도서명</th>
+				<th style="text-align: center; width : 20%;">사진</th>
+				<th style="text-align: center; width : 40%;">도서명</th>
 				<th style="text-align: center;" >저자</th>
 				<th style="text-align: center">출판사</th>
 				<th style="text-align: center">대출 가능</th>
@@ -30,15 +30,17 @@
 			
 			<c:forEach var="list" varStatus="i" items="${list}">
 				<tr>
-					<th style="height : 100px; width : 20%;' vertical-align: middle;"><img alt="등록된 이미지가 없습니다."></th>
-					<td style="vertical-align : middle;">${list.book_name }</td>
-					<td style="vertical-align : middle;">${list.book_author }</td>
-					<td style="vertical-align : middle;">${list.book_publisher }</td>
+					<th style="height : 100px; width : 20%;' vertical-align: middle; text-align: center;">
+						<img class="file_img" alt="등록된 이미지가 없습니다." src="/SKHUBooks/resources/bootstrap/images/upload/${list.FILE_NAME }">
+					</th>
+					<td style="vertical-align : middle;">${list.BOOK_NAME }</td>
+					<td style="vertical-align : middle;">${list.BOOK_AUTHOR }</td>
+					<td style="vertical-align : middle;">${list.BOOK_PUBLISHER }</td>
 					<td style="vertical-align : middle;">
-						<c:if test="${list.book_loan }">
+						<c:if test="${list.BOOK_LOAN }">
 							<blue>대출 가능</blue>
 						</c:if>
-						<c:if test="${!list.book_loan }">
+						<c:if test="${!list.BOOK_LOAN }">
 							<red>대출 불가</red>
 						</c:if>
 					</td>

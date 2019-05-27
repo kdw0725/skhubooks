@@ -19,6 +19,7 @@ import com.skhu.skhubooks.Service.bookService;
 import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.PageMaker;
 import com.skhu.skhubooks.VO.bookVO;
+import com.skhu.skhubooks.VO.fileVO;
 
 @Controller
 public class bookController {
@@ -42,27 +43,36 @@ public class bookController {
 	}
 	
 	@RequestMapping(value = "/book/bookInsertDo", method = RequestMethod.POST)
-	public String bookInsertdDo(bookVO vo,
+	public String bookInsertdDo(bookVO vo, fileVO fvo,
 			@RequestParam("book_img") MultipartFile files
 			) throws Exception{
-		String sourceFileName = files.getOriginalFilename();
-		String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
-		File destinationFile;
-		String destinationFileName;
-		String fileURL = "C:\\dev\\sts-bundle\\sts-3.9.7.RELEASE\\workspace\\SKHUBooks\\src\\main\\webapp\\resources\\bootstrap\\images\\upload\\";
 		
-		do {
-			destinationFileName = RandomStringUtils .randomAlphanumeric(32)+"."+sourceFileNameExtension;
-			destinationFile = new File(fileURL+destinationFileName);
-		}while(destinationFile.exists());
-		
-		destinationFile.getParentFile().mkdirs();
-		files.transferTo(destinationFile);
-		
-		service.insertBook(vo);
+		if(files.isEmpty()) {
+			service.insertBook(vo);
+		}else {
+			String sourceFileName = files.getOriginalFilename();
+			String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
+			File destinationFile;
+			String destinationFileName;
+			String fileURL = "C:\\dev\\sts-bundle\\sts-3.9.7.RELEASE\\workspace\\SKHUBooks\\src\\main\\webapp\\resources\\bootstrap\\images\\upload\\";
+			
+			do {
+				destinationFileName = RandomStringUtils .randomAlphanumeric(32)+"."+sourceFileNameExtension;
+				destinationFile = new File(fileURL+destinationFileName);
+			}while(destinationFile.exists());
+			
+			destinationFile.getParentFile().mkdirs();
+			files.transferTo(destinationFile);
+			service.insertBook(vo);
+			
+			fvo.setBook_no(vo.getBook_no());
+			fvo.setFile_name(destinationFileName);
+			fvo.setFile_ori_name(sourceFileName);
+			fvo.setFile_url(fileURL);
+			service.insertFile(fvo);
+		}
 		
 		return "redirect:/book/bookList";
 	}
-	
 }
 	
