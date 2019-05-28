@@ -2778,14 +2778,14 @@ span.stButton_gradient,
 	margin-left : auto;
 	margin-right: auto;
 }
-.table tbody tr th{
+.detail_body tr th{
 	vertical-align: middle;
 	text-align: center;
 	width: 10%;
 	height: 84px;
 }
 
-.table tbody tr td{
+.detail_body tr td{
 	vertical-align: middle;
 	text-align: center;
 }

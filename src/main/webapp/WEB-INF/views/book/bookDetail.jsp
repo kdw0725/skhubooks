@@ -25,20 +25,20 @@
 					<th style="text-align: center; width: 40%;" rowspan="5">
 						<img class="book_image" alt="등록된 이미지가 없습니다." src="/SKHUBooks/resources/bootstrap/images/upload/${list.FILE_NAME }">
 					</th>
-					<th>도서명</th>
-					<td>${list.BOOK_NAME }</td>
+					<th style="vertical-align : middle;">도서명</th>
+					<td style="vertical-align : middle;">${list.BOOK_NAME }</td>
 				</tr>
 				<tr>
-					<th>저자</th>
-					<td>${list.BOOK_AUTHOR }</td>
+					<th style="vertical-align : middle;">저자</th>
+					<td style="vertical-align : middle;">${list.BOOK_AUTHOR }</td>
 				</tr>
 				<tr>
-					<th>출판사</th>
-					<td>${list.BOOK_PUBLISHER }</td>
+					<th style="vertical-align : middle;">출판사</th>
+					<td style="vertical-align : middle;">${list.BOOK_PUBLISHER }</td>
 				</tr>
 				<tr>
-					<th>상태</th>
-					<td>
+					<th style="vertical-align : middle;">상태</th>
+					<td style="vertical-align : middle;">
 						<c:if test="${list.BOOK_LOAN }">
 							<blue>대출 가능</blue>
 						</c:if>
@@ -48,8 +48,8 @@
 					</td>
 				</tr>
 				<tr>
-					<th>등록일</th>
-					<td>${list.BOOK_INSERTDATE }</td>
+					<th style="vertical-align : middle;">등록일</th>
+					<td style="vertical-align : middle;">${list.BOOK_INSERTDATE }</td>
 				</tr>
 				<tr>
 					<th colspan="3">

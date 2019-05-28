@@ -92,5 +92,11 @@ public class bookController {
 		service.delFile(vo.getBook_no());
 		return "redirect:/book/bookList";
 	}
+	
+	@RequestMapping(value = "/book/bookUpdate", method = RequestMethod.GET)
+	public String bookUpdate(Model model, bookVO vo) throws Exception{
+		model.addAttribute("list",service.bookDetail(vo.getBook_no()));
+		return "/book/bookUpdate";
+	}
 }
 	
