@@ -4,12 +4,15 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skhu.skhubooks.bookMapper"><!-- 이거 수정해줘야된다 동욱아 -->
 	<select id="selectBook" resultType="hashMap" parameterType="hashMap">
+<!-- 	<![CDATA[ -->
 		SELECT 
 							A.BOOK_NO,
 							A.BOOK_NAME, 
 							A.BOOK_AUTHOR, 
 							A.BOOK_PUBLISHER, 
 							A.BOOK_LOAN,
+							DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
+							
 							B.FILE_NAME 
 		FROM 
 							BOOK A
@@ -18,9 +21,13 @@
 		ON
 							A.BOOK_NO = B.BOOK_NO
 		WHERE 
-							BOOK_NAME IS NOT NULL
+							A.BOOK_NAME IS NOT NULL
+<!-- 		]]> -->
+		<include refid="search"/>
+<!-- 		<![CDATA[ -->
 		LIMIT
         					#{pageStart}, #{perPageNum}
+<!--         ]]> -->
 	</select>
 	
 	<select id="bookTotalCount" resultType="Integer">
@@ -66,4 +73,52 @@
                             #{file_url}
                             )
 	</insert>
+	
+	<select id="bookDetail" resultType="hashMap" parameterType="String">
+		SELECT 
+							A.BOOK_NO,
+							A.BOOK_NAME, 
+							A.BOOK_AUTHOR, 
+							A.BOOK_PUBLISHER, 
+							A.BOOK_LOAN,
+                            DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
+                            B.FILE_NAME,
+                            B.FILE_URL
+                            
+		FROM 
+							BOOK A
+		INNER JOIN
+							FILE B
+		ON
+							A.BOOK_NO = B.BOOK_NO
+		WHERE 
+							A.BOOK_NO = #{book_no}
+	</select>
+	
+	<delete id="delBook" parameterType="String">
+		DELETE
+		FROM
+							BOOK
+		WHERE
+							BOOK_NO = #{book_no}
+	</delete>
+	
+	<delete id="delFile" parameterType="String">
+		DELETE
+		FROM
+							FILE
+		WHERE
+							BOOK_NO = #{book_no}
+	</delete>
+	
+	<sql id="search" >
+		<if test="keyword != null">
+		AND 				
+							A.BOOK_NAME LIKE CONCAT('%', #{keyword}, '%')
+        OR
+        					A.BOOK_AUTHOR LIKE CONCAT('%', #{keyword}, '%')
+        OR 
+         					A.BOOK_PUBLISHER LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+	</sql>
 </mapper>

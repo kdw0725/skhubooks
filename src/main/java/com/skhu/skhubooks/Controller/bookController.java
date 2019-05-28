@@ -20,6 +20,7 @@ import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.PageMaker;
 import com.skhu.skhubooks.VO.bookVO;
 import com.skhu.skhubooks.VO.fileVO;
+import com.skhu.skhubooks.VO.searchCriteria;
 
 @Controller
 public class bookController {
@@ -29,11 +30,11 @@ public class bookController {
 	bookService service;
 	
 	@RequestMapping(value = "/book/bookList", method = RequestMethod.GET)
-	public String bookList(Model model, Criteria cri) throws Exception {
+	public String bookList(Model model, Criteria cri, searchCriteria scri) throws Exception {
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
+		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.bookTotalCount());
-		model.addAttribute("list",service.selectBook(cri));
+		model.addAttribute("list",service.selectBook(scri));
 		return "/book/bookList";
 	}
 	
@@ -71,8 +72,38 @@ public class bookController {
 			fvo.setFile_url(fileURL);
 			service.insertFile(fvo);
 		}
-		
 		return "redirect:/book/bookList";
 	}
+	
+	@RequestMapping(value = "/book/bookDetail", method = RequestMethod.GET)
+	public String bookDetail(Model model, bookVO vo) {
+		model.addAttribute("list",service.bookDetail(vo.getBook_no()));
+		return "/book/bookDetail";
+	}
+
+	@RequestMapping(value="/book/bookDelete", method = RequestMethod.GET)
+	public String bookDelete(bookVO vo, fileVO fvo) throws Exception {
+		String fileURL = "C:/dev/sts-bundle/sts-3.9.7.RELEASE/workspace/SKHUBooks/src/main/webapp/resources/bootstrap/images/upload/";
+		String fileName = fvo.getFile_name();
+		File file = new File(fileURL+fileName);
+		if(file.exists()==true) {
+			file.delete();
+		}
+		service.delBook(vo.getBook_no());
+		service.delFile(vo.getBook_no());
+		return "redirect:/book/bookList";
+	}
+	
+	@RequestMapping(value = "/book/bookUpdate", method = RequestMethod.GET)
+	public String bookUpdate(Model model, bookVO vo) throws Exception{
+		model.addAttribute("list",service.bookDetail(vo.getBook_no()));
+		return "/book/bookUpdate";
+	}
+	
+	@RequestMapping(value = "/book/bookSearch", method=RequestMethod.GET)
+	public String bookSearch() throws Exception{
+		return "/book/bookSearch";
+	}
+	
 }
 	

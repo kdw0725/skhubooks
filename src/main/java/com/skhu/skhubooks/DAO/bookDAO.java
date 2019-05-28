@@ -12,5 +12,8 @@ public interface bookDAO {
 	public int bookTotalCount() throws Exception;
 	public int insertBook(bookVO vo) throws Exception;
 	public int insertFile(fileVO vo) throws Exception;
+	public HashMap<String, Object> bookDetail(String book_no);
+	public int delBook(String book_no) throws Exception;
+	public int delFile(String book_no) throws Exception;
 	
 }

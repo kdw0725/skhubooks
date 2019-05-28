@@ -15,6 +15,7 @@
 		black{color: black;}
 		blue{color : blue;}
 		red{color : red;}
+		white{color : white;}
 	</style>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,7 +62,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/SKHUBooks/"><h3><b><x>Home</x></b></h3></a></li>
 
-                        <li><a href="/SKHUBooks/book/bookList"><h3><p><b>자료 검색</b></p></h3></a></li>
+                        <li><a href="/SKHUBooks/book/bookSearch"><h3><p><b>자료 검색</b></p></h3></a></li>
 
                         <li class="dropdown"><a href="blog.html"><h3><b><p>도서 관리<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
