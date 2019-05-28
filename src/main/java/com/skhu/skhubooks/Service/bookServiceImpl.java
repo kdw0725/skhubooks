@@ -36,4 +36,19 @@ public class bookServiceImpl implements bookService{
 		return dao.insertFile(vo);
 	}
 
+	@Override
+	public HashMap<String, Object> bookDetail(String book_no) {
+		return dao.bookDetail(book_no);
+	}
+
+	@Override
+	public int delBook(String book_no) throws Exception {
+		return dao.delBook(book_no);
+	}
+
+	@Override
+	public int delFile(String book_no) throws Exception {
+		return dao.delFile(book_no);
+	}
+
 }

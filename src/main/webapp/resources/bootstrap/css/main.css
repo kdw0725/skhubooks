@@ -2769,3 +2769,23 @@ span.stButton_gradient,
 	margin-left : auto;
 	margin-right: auto;
 }
+.book_image{
+	width : auto;
+	height: auto;
+	max-width: 400px;
+	max-height: 400px;
+	display: block;
+	margin-left : auto;
+	margin-right: auto;
+}
+.table tbody tr th{
+	vertical-align: middle;
+	text-align: center;
+	width: 10%;
+	height: 84px;
+}
+
+.table tbody tr td{
+	vertical-align: middle;
+	text-align: center;
+}

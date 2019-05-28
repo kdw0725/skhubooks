@@ -38,4 +38,19 @@ public class bookDAOImpl implements bookDAO{
 		return sqlSession.insert(namespace+".insertFile",vo);
 	}
 
+	@Override
+	public HashMap<String, Object> bookDetail(String book_no) {
+		return sqlSession.selectOne(namespace+".bookDetail", book_no);
+	}
+
+	@Override
+	public int delBook(String book_no) throws Exception {
+		return sqlSession.delete(namespace+".delBook",book_no);
+	}
+
+	@Override
+	public int delFile(String book_no) throws Exception {
+		return sqlSession.delete(namespace+".delFile", book_no);
+	}
+
 }

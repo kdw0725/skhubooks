@@ -29,9 +29,10 @@
 			</tr>
 			
 			<c:forEach var="list" varStatus="i" items="${list}">
-				<tr>
+				<tr onclick="gotoDetail(${list.BOOK_NO})">
 					<th style="height : 100px; width : 20%;' vertical-align: middle; text-align: center;">
 						<img class="file_img" alt="등록된 이미지가 없습니다." src="/SKHUBooks/resources/bootstrap/images/upload/${list.FILE_NAME }">
+						<input type="hidden" name=book_insertDate, value="${list.BOOK_INSERTDATE }"/>
 					</th>
 					<td style="vertical-align : middle;">${list.BOOK_NAME }</td>
 					<td style="vertical-align : middle;">${list.BOOK_AUTHOR }</td>
@@ -82,7 +83,11 @@
 </body>
 <script>
 function bookInsert(){
-	location.href="/SKHUBooks/book/bookInsert"
+	location.href="/SKHUBooks/book/bookInsert";
+}
+
+function gotoDetail(book_no){
+	location.href="/SKHUBooks/book/bookDetail?book_no="+book_no;
 }
 </script>
 </html>

@@ -71,7 +71,25 @@ public class bookController {
 			fvo.setFile_url(fileURL);
 			service.insertFile(fvo);
 		}
-		
+		return "redirect:/book/bookList";
+	}
+	
+	@RequestMapping(value = "/book/bookDetail", method = RequestMethod.GET)
+	public String bookDetail(Model model, bookVO vo) {
+		model.addAttribute("list",service.bookDetail(vo.getBook_no()));
+		return "/book/bookDetail";
+	}
+
+	@RequestMapping(value="/book/bookDelete", method = RequestMethod.GET)
+	public String bookDelete(bookVO vo, fileVO fvo) throws Exception {
+		String fileURL = "C:/dev/sts-bundle/sts-3.9.7.RELEASE/workspace/SKHUBooks/src/main/webapp/resources/bootstrap/images/upload/";
+		String fileName = fvo.getFile_name();
+		File file = new File(fileURL+fileName);
+		if(file.exists()==true) {
+			file.delete();
+		}
+		service.delBook(vo.getBook_no());
+		service.delFile(vo.getBook_no());
 		return "redirect:/book/bookList";
 	}
 }

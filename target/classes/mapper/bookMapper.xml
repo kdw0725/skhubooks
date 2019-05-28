@@ -10,6 +10,8 @@
 							A.BOOK_AUTHOR, 
 							A.BOOK_PUBLISHER, 
 							A.BOOK_LOAN,
+							DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
+							
 							B.FILE_NAME 
 		FROM 
 							BOOK A
@@ -66,4 +68,41 @@
                             #{file_url}
                             )
 	</insert>
+	
+	<select id="bookDetail" resultType="hashMap" parameterType="String">
+		SELECT 
+							A.BOOK_NO,
+							A.BOOK_NAME, 
+							A.BOOK_AUTHOR, 
+							A.BOOK_PUBLISHER, 
+							A.BOOK_LOAN,
+                            DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
+                            B.FILE_NAME,
+                            B.FILE_URL
+                            
+		FROM 
+							BOOK A
+		INNER JOIN
+							FILE B
+		ON
+							A.BOOK_NO = B.BOOK_NO
+		WHERE 
+							A.BOOK_NO = #{book_no}
+	</select>
+	
+	<delete id="delBook" parameterType="String">
+		DELETE
+		FROM
+							BOOK
+		WHERE
+							BOOK_NO = #{book_no}
+	</delete>
+	
+	<delete id="delFile" parameterType="String">
+		DELETE
+		FROM
+							FILE
+		WHERE
+							BOOK_NO = #{book_no}
+	</delete>
 </mapper>

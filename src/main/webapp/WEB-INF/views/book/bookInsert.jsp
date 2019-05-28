@@ -46,7 +46,7 @@
 							<div class="filebox">
 								<label for="ex_file" class="btn btn-default">파일 선택</label>
 								<input class="form-control" disabled="disabled" placeholder="선택된 파일 없음">
-								<input style="width:100%;" type="file" required="required" class="upload-hidden" id="ex_file" name="book_img">
+								<input style="width:100%;" type="file" class="upload-hidden" id="ex_file" name="book_img">
 							</div>
 						</td>
 					</tr>
@@ -59,8 +59,8 @@
 					
 					<tr>
 						<td colspan="2">
-							<input type="submit" class="btn btn-default pull-rigth">
-							<input type="reset" class="btn btn-default pull-rigth">
+							<input type="submit" class="btn btn-default pull-left">
+							<input type="reset" class="btn btn-default pull-left">
 							<input type="button" class="btn btn-default pull-right" value="목록" onclick="gotoList()">
 						</td>
 					</tr>
