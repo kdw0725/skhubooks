@@ -12,8 +12,12 @@
 							QNA_COMMENT
 		FROM
 							QNA_LIST
+		WHERE
+							QNA_NO > 0
+		<include refid="search"/>
 		ORDER BY
 							QNA_NO DESC
+		
 		LIMIT 
         					#{pageStart}, #{perPageNum}
 	</select>
@@ -87,4 +91,15 @@
 		WHERE 
 							QNA_NO = #{qna_no}
 	</update>
+	
+	<sql id="search">
+		<if test="keyword != null">
+			AND
+							QNA_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+			OR
+							QNA_WRITER LIKE CONCAT('%', #{keyword}, '%')
+			OR			
+							QNA_COMMENT LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</sql>
 </mapper>

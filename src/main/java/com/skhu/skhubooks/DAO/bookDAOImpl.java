@@ -7,9 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.bookVO;
 import com.skhu.skhubooks.VO.fileVO;
+import com.skhu.skhubooks.VO.searchCriteria;
 
 @Repository
 public class bookDAOImpl implements bookDAO{
@@ -19,8 +19,8 @@ public class bookDAOImpl implements bookDAO{
 	private SqlSession sqlSession;
 
 	@Override
-	public List<HashMap<String, Object>> selectBook(Criteria cri) throws Exception {
-		return sqlSession.selectList(namespace+".selectBook", cri);
+	public List<HashMap<String, Object>> selectBook(searchCriteria scri) throws Exception {
+		return sqlSession.selectList(namespace+".selectBook", scri);
 	}
 
 	@Override

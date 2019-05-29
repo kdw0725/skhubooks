@@ -17,9 +17,12 @@
 	<h1 class="title"><b>자료 검색</b></h1>
 	<p>SKHUBooks 자료 검색 사이트 입니다.</p>
 	<%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
-	<br><br><br><br>
+	<br><br>
 	<div class="container">
 		<table class="table table-striped" style="text-align: center">
+		<caption>
+			<a><b>"${keyword}"</b></a>에 대한 검색 결과입니다.<br><br>
+		</caption>
 			<tr>
 				<th style="text-align: center; width : 20%;">사진</th>
 				<th style="text-align: center; width : 40%;">도서명</th>
@@ -29,7 +32,7 @@
 			</tr>
 			
 			<c:forEach var="list" varStatus="i" items="${list}">
-				<tr>
+				<tr onclick="bookDetail(${list.BOOK_NO})">
 					<th style="height : 100px; width : 20%;' vertical-align: middle; text-align: center;">
 						<img class="file_img" alt="등록된 이미지가 없습니다." src="/SKHUBooks/resources/bootstrap/images/upload/${list.FILE_NAME }">
 					</th>
@@ -82,7 +85,11 @@
 </body>
 <script>
 function bookInsert(){
-	location.href="/SKHUBooks/book/bookInsert"
+	location.href="/SKHUBooks/book/bookInsert";
+}
+
+function bookDetail(book_no){
+	location.href = "/SKHUBooks/book/bookDetail?book_no="+book_no;
 }
 </script>
 </html>

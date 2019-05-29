@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skhu.skhubooks.Service.qnaService;
-import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.PageMaker;
 import com.skhu.skhubooks.VO.qnaVO;
+import com.skhu.skhubooks.VO.searchCriteria;
 
 @Controller
 public class qnaController {
@@ -20,12 +20,13 @@ public class qnaController {
 	qnaService service;
 	
 	@RequestMapping(value = "/qna/qnaList", method = RequestMethod.GET)
-	public String qnaList(Model model, Criteria cri)throws Exception{
+	public String qnaList(Model model, searchCriteria scri)throws Exception{
 		List<qnaVO> list;
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
+		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.qnaTotalCount());
-		list = service.qnaList(cri);
+		System.out.println(scri.toString());
+		list = service.qnaList(scri);
 		model.addAttribute("list", list);
 		model.addAttribute("pageMaker",pageMaker);
 		return "/qna/qnaList";
@@ -70,5 +71,5 @@ public class qnaController {
 	@RequestMapping(value="/qna/fna", method = RequestMethod.GET)
 	public String fna() throws Exception{
 		return "/qna/fna";
-	}
+	}	
 }

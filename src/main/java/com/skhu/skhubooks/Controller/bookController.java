@@ -35,6 +35,8 @@ public class bookController {
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.bookTotalCount());
 		model.addAttribute("list",service.selectBook(scri));
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("keyword",scri.getKeyword());
 		return "/book/bookList";
 	}
 	

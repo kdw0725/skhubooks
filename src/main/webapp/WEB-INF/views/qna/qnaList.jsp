@@ -106,6 +106,13 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<form action="qnaList">
+			<div class="control">
+			    <i class="fa fa-search"></i>
+				<input type="text" placeholder="검색 내용" class="form-control" style=" height : 50px; padding-left: 50px" name="keyword">
+				<input type="submit" value="검색" class="btn btn-success">
+			</div>
+		</form>
 		<div class="text-center">
 			<ul class="paging">
 				<c:if test="${pageMaker.prev }">
@@ -135,7 +142,6 @@
 			</ul>
 		</div>
 	</div>
-	
 </body>
 
 <script>

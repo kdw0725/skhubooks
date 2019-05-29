@@ -2796,47 +2796,47 @@ span.stButton_gradient,
   background-color: #7ebc5c;
   background-image: url(images/bg.gif);
   padding: 50px 0; }
-  .hero .logo {
-    margin-bottom: 30px;
-    display: inline-block; }
-  .hero .hero-title {
-    font-size: 65px;
-    font-size: 4.0625em;
-    line-height: 1.2;
-    font-weight: 700;
-    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
-    margin-bottom: 30px; }
-    @media screen and (max-width: 640px) {
-      .hero .hero-title {
-        font-size: 46px;
-        font-size: 2.875em; } }
-  .hero p {
-    width: 50%;
-    margin: 0 auto;
-    color: #e1d8e4;
-    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3); }
-    @media screen and (max-width: 640px) {
-      .hero p {
-        width: 100%; } }
-  .hero .subscribe-form {
-    width: 50%;
-    margin: 30px auto; }
-    @media screen and (max-width: 640px) {
-      .hero .subscribe-form {
-        width: 100%; } }
-    .hero .subscribe-form .control {
-      position: relative; }
-    .hero .subscribe-form .fa, .hero .subscribe-form input[type="submit"] {
-      position: absolute; }
-    .hero .subscribe-form input[type="email"] {
-      width: 100%;
-      padding: 20px 150px 20px 50px; }
-    .hero .subscribe-form .fa {
-      color: #dcdcdc;
-      top: 20px;
-      left: 20px; }
-    .hero .subscribe-form input[type="submit"] {
-      top: 5px;
-      right: 5px;
-      bottom: 5px;
-      padding: 0 20px; }
+.hero .logo {
+  margin-bottom: 30px;
+  display: inline-block; }
+.hero .hero-title {
+  font-size: 65px;
+  font-size: 4.0625em;
+  line-height: 1.2;
+  font-weight: 700;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px; }
+  @media screen and (max-width: 640px) {
+    .hero .hero-title {
+      font-size: 46px;
+      font-size: 2.875em; } }
+.hero p {
+  width: 50%;
+  margin: 0 auto;
+  color: #e1d8e4;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3); }
+  @media screen and (max-width: 640px) {
+    .hero p {
+      width: 100%; } }
+.hero .subscribe-form {
+  width: 50%;
+  margin: 30px auto; }
+  @media screen and (max-width: 640px) {
+    .hero .subscribe-form {
+      width: 100%; } }
+.hero .subscribe-form .control {
+  position: relative; }
+.hero .subscribe-form .fa, .hero .subscribe-form input[type="submit"] {
+  position: absolute; }
+.hero .subscribe-form input[type="email"] {
+  width: 100%;
+  padding: 20px 150px 20px 50px; }
+.hero .subscribe-form .fa {
+  color: #dcdcdc;
+  top: 20px;
+  left: 20px; }
+.hero .subscribe-form input[type="submit"] {
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  padding: 0 20px; }
