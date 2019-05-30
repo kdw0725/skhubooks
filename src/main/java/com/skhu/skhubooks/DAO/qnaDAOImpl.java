@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.qnaVO;
+import com.skhu.skhubooks.VO.searchCriteria;
 
 @Repository
 public class qnaDAOImpl implements qnaDAO{
@@ -52,7 +53,7 @@ public class qnaDAOImpl implements qnaDAO{
 	}
 
 	@Override
-	public int qnaTotalCount() throws Exception {
-		return sqlSession.selectOne(namespace+".qnaTotalCount");
+	public int qnaTotalCount(searchCriteria scri) throws Exception {
+		return sqlSession.selectOne(namespace+".qnaTotalCount",scri);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.qnaVO;
+import com.skhu.skhubooks.VO.searchCriteria;
 
 public interface qnaDAO {
 	public List<qnaVO> qnaList(Criteria cri) throws Exception;
@@ -13,6 +14,6 @@ public interface qnaDAO {
 	public int commentInsert(qnaVO qnavo) throws Exception;
 	public int commentDelete(int qna_no) throws Exception;
 	public int commentUpdate(qnaVO qnavo) throws Exception;
-	public int qnaTotalCount() throws Exception;
+	public int qnaTotalCount(searchCriteria scri) throws Exception;
 	
 }

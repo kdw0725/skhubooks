@@ -22,16 +22,17 @@
         					#{pageStart}, #{perPageNum}
 	</select>
 	
-	<select id="qnaTotalCount" resultType="Integer">
+	<select id="qnaTotalCount" resultType="Integer" parameterType="hashMap">
 		SELECT
 							COUNT(QNA_NO)
 		FROM	
 							QNA_LIST
 		WHERE
 							QNA_NO > 0
+		<include refid="search"/>
 	</select>
 	
-	<insert id="qnaInsert" parameterType="qnaVO">
+	<insert id="qnaInsert" parameterType="qnaVO" >
 		INSERT 
 		INTO 
 							QNA_LIST

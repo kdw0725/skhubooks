@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skhu.skhubooks.Service.qnaService;
+import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.PageMaker;
 import com.skhu.skhubooks.VO.qnaVO;
 import com.skhu.skhubooks.VO.searchCriteria;
@@ -20,15 +21,15 @@ public class qnaController {
 	qnaService service;
 	
 	@RequestMapping(value = "/qna/qnaList", method = RequestMethod.GET)
-	public String qnaList(Model model, searchCriteria scri)throws Exception{
+	public String qnaList(Model model,Criteria cri, searchCriteria scri)throws Exception{
 		List<qnaVO> list;
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(service.qnaTotalCount());
-		System.out.println(scri.toString());
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.qnaTotalCount(scri));
 		list = service.qnaList(scri);
 		model.addAttribute("list", list);
 		model.addAttribute("pageMaker",pageMaker);
+		model.addAttribute("keyword",scri.getKeyword());
 		return "/qna/qnaList";
 	}
 	

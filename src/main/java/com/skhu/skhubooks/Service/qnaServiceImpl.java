@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.skhu.skhubooks.DAO.qnaDAO;
 import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.qnaVO;
+import com.skhu.skhubooks.VO.searchCriteria;
 
 @Service
 public class qnaServiceImpl implements qnaService{
@@ -50,8 +51,8 @@ public class qnaServiceImpl implements qnaService{
 	}
 
 	@Override
-	public int qnaTotalCount() throws Exception {
-		return dao.qnaTotalCount();
+	public int qnaTotalCount(searchCriteria scri) throws Exception {
+		return dao.qnaTotalCount(scri);
 	}
 	
 }
