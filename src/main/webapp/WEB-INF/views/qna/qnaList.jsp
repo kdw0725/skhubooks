@@ -106,8 +106,8 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<form action="qnaList">
-			<div class="control">
+		<form action="qnaList" class="searching-form">
+			<div class="searchtag">
 			    <i class="fa fa-search"></i>
 				<input type="text" placeholder="검색 내용" class="form-control" style=" height : 50px; padding-left: 50px" name="keyword">
 				<input type="submit" value="검색" class="btn btn-success">

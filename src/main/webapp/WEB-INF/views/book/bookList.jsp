@@ -51,7 +51,7 @@
 			</c:forEach>
 		</table>
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
-			<input class="btn btn-default pull-rigth" type="button" onclick="bookInsert()" value="신규등록">
+			<button class="btn btn-default pull-rigth" type="button" onclick="bookInsert()"><span class="glyphicon glyphicon-pencil"></span>신규 등록</button>
 		</sec:authorize>
 		<div class="text-center">
 			<ul class="paging">

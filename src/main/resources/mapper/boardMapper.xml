@@ -15,18 +15,21 @@
                             BOARD_LIST,
                             (SELECT @rownum:=0) r
         WHERE               BOARD_NO > 0
+        <include refid="search"/>
         ORDER BY 			No DESC
         LIMIT
         					#{pageStart}, #{perPageNum}
 	</select>
 	
-	<select id="countBoardList" resultType="Integer">
+	<select id="countBoardList" resultType="Integer" parameterType="hashMap">
 		SELECT
 							COUNT(BOARD_NO)
 		FROM
 							BOARD_LIST
 		WHERE
 							BOARD_NO > 0
+       <include refid="search"/>
+							
 	</select>
 	
 	<insert id='boardInsert' parameterType="boardVO">
@@ -75,4 +78,14 @@
 	
 	</update>
 
+	<sql id="search">
+		<if test="keyword != null">
+		AND
+							BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+		OR
+							BOARD_CONTENT LIKE CONCAT('%',#{keyword},'%')
+		OR
+							BOARD_WRITER LIKE CONCAT('%', #{keyword},'%')
+		</if>
+	</sql>
 </mapper>

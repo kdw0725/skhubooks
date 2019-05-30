@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.skhu.skhubooks.DAO.boardDAO;
 import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.boardVO;
+import com.skhu.skhubooks.VO.searchCriteria;
 
 @Service
 public class boardServiceImpl implements boardService{
@@ -40,8 +41,8 @@ public class boardServiceImpl implements boardService{
 	}
 
 	@Override
-	public int countBoardList() throws Exception {
-		return dao.countBoardList();
+	public int countBoardList(searchCriteria scri) throws Exception {
+		return dao.countBoardList(scri);
 	}
 
 

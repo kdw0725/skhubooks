@@ -35,32 +35,38 @@
 		
 	</table>
 	
-	<input class="btn btn-default pull-rigth" type="button" onclick="boardInsert()" value="글쓰기">
-	
+	<button class="btn btn-default pull-rigth" type="button" onclick="boardInsert()"><span class="glyphicon glyphicon-pencil"></span>글쓰기</button>
+	<form action="boardList" class="searching-form">
+			<div class="searchtag">
+			    <i class="fa fa-search"></i>
+				<input type="text" placeholder="검색 내용" class="form-control" style=" height : 50px; padding-left: 50px" name="keyword">
+				<input type="submit" value="검색" class="btn btn-success">
+			</div>
+		</form>
 	<div class="text-center">
 		<ul class="paging">
 			<c:if test="${pageMaker.prev }">
 				<li class="pagingLeftBtn">
-					<a href='<c:url value="/board/boardList?page=${pageMaker.startPage-1 }"/>'></a>
+					<a href='<c:url value="/board/boardList?page=${pageMaker.startPage-1 }&keyword=${keyword }"/>'></a>
 				</li>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
 				<c:choose>
 					<c:when test="${idx==pageMaker.cri.page }">
 						<li class="active">
-	        				<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
+	        				<a href='<c:url value="/board/boardList?page=${idx }&keyword=${keyword }"/>'>${idx }</a>
 	        			</li>
 					</c:when>
 					<c:otherwise>
 						<li>
-	        				<a href='<c:url value="/board/boardList?page=${idx }"/>'>${idx }</a>
+	        				<a href='<c:url value="/board/boardList?page=${idx }&keyword=${keyword }"/>'>${idx }</a>
 						</li>
 					</c:otherwise>
 				</c:choose>
     		</c:forEach>
 			<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
     			<li class="pagingRightBtn">
-        			<a href='<c:url value="/board/boardList?page=${pageMaker.endPage+1 }"/>'></a>
+        			<a href='<c:url value="/board/boardList?page=${pageMaker.endPage+1 }&keyword=${keyword }"/>'></a>
     			</li>
     		</c:if>
 		</ul>

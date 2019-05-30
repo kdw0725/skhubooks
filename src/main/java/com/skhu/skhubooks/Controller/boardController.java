@@ -10,6 +10,7 @@ import com.skhu.skhubooks.Service.boardService;
 import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.PageMaker;
 import com.skhu.skhubooks.VO.boardVO;
+import com.skhu.skhubooks.VO.searchCriteria;
 
 @Controller
 public class boardController {
@@ -17,12 +18,13 @@ public class boardController {
 	boardService service;
 	
 	@RequestMapping(value = "/board/boardList", method = RequestMethod.GET)
-	public String boardList(Model model, Criteria cri, int page)throws Exception{
+	public String boardList(Model model, Criteria cri, searchCriteria scri)throws Exception{
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.countBoardList());
-		model.addAttribute("list",  service.boardList(cri));
+		pageMaker.setTotalCount(service.countBoardList(scri));
+		model.addAttribute("list",  service.boardList(scri));
 		model.addAttribute("pageMaker",pageMaker);
+		model.addAttribute("keyword",scri.getKeyword());
 		return "/board/boardList";
 	}
 	

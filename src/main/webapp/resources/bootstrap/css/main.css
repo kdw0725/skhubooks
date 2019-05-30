@@ -2840,3 +2840,27 @@ span.stButton_gradient,
   right: 5px;
   bottom: 5px;
   padding: 0 20px; }
+  
+  
+ 
+.searching-form{
+	width: 50%;
+	margin: 30px auto;
+}
+.searching-form .searchtag{
+	position: relative;
+}
+.searching-form .fa, .searching-form input[type="submit"]{
+	position: absolute;
+}
+.searching-form .fa{
+	color: #dcdcdc;
+ 	top: 20px;
+ 	left: 20px;
+}
+.searching-form input[type="submit"]{
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
+	padding: 0 20px;
+}

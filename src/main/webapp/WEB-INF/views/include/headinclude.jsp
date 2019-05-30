@@ -75,8 +75,8 @@
 
                         <li class="dropdown"><a href="shortcodes.html "><h3><b><p>게시판<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
-                              <li><a href="/SKHUBooks/board/boardList?page=1">자유게시판</a></li>
-                              <li><a href="/SKHUBooks/qna/qnaList?page=1">Q & A</a></li>
+                              <li><a href="/SKHUBooks/board/boardList">자유게시판</a></li>
+                              <li><a href="/SKHUBooks/qna/qnaList">Q & A</a></li>
                               <li><a href="/SKHUBooks/qna/fna">자주 하는 질문</a></li>
                           </ul></li>
 
