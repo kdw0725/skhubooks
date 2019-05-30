@@ -32,8 +32,8 @@ public class bookController {
 	@RequestMapping(value = "/book/bookList", method = RequestMethod.GET)
 	public String bookList(Model model, Criteria cri, searchCriteria scri) throws Exception {
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(service.bookTotalCount());
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.bookTotalCount(scri));
 		model.addAttribute("list",service.selectBook(scri));
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("keyword",scri.getKeyword());

@@ -30,13 +30,14 @@
 <!--         ]]> -->
 	</select>
 	
-	<select id="bookTotalCount" resultType="Integer">
+	<select id="bookTotalCount" resultType="Integer" parameterType="hashMap">
 		SELECT
 							COUNT(BOOK_NO)
 		FROM	
 							BOOK
 		WHERE
 							BOOK_NO IS NOT NULL
+		<include refid="searching"/>
 	</select>
 	<insert id="insertBook" parameterType="bookVO">
 		INSERT 
@@ -120,5 +121,16 @@
         OR 
          					A.BOOK_PUBLISHER LIKE CONCAT('%', #{keyword}, '%')
         </if>
+	</sql>
+	
+	<sql id="searching">
+		<if test="keyword != null">
+			AND 				
+							BOOK_NAME LIKE CONCAT('%', #{keyword}, '%')
+        	OR
+        					BOOK_AUTHOR LIKE CONCAT('%', #{keyword}, '%')
+        	OR 
+         					BOOK_PUBLISHER LIKE CONCAT('%', #{keyword}, '%')
+		</if>
 	</sql>
 </mapper>

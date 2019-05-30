@@ -3,13 +3,14 @@ package com.skhu.skhubooks.DAO;
 import java.util.HashMap;
 import java.util.List;
 
+import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.bookVO;
 import com.skhu.skhubooks.VO.fileVO;
 import com.skhu.skhubooks.VO.searchCriteria;
 
 public interface bookDAO {
-	public List<HashMap<String, Object>> selectBook(searchCriteria scri) throws Exception;
-	public int bookTotalCount() throws Exception;
+	public List<HashMap<String, Object>> selectBook(Criteria cri) throws Exception;
+	public int bookTotalCount(searchCriteria scri) throws Exception;
 	public int insertBook(bookVO vo) throws Exception;
 	public int insertFile(fileVO vo) throws Exception;
 	public HashMap<String, Object> bookDetail(String book_no);

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skhu.skhubooks.DAO.bookDAO;
+import com.skhu.skhubooks.VO.Criteria;
 import com.skhu.skhubooks.VO.bookVO;
 import com.skhu.skhubooks.VO.fileVO;
 import com.skhu.skhubooks.VO.searchCriteria;
@@ -17,13 +18,13 @@ public class bookServiceImpl implements bookService{
 	private bookDAO dao;
 	
 	@Override
-	public List<HashMap<String, Object>> selectBook(searchCriteria scri) throws Exception {
-		return dao.selectBook(scri);
+	public List<HashMap<String, Object>> selectBook(Criteria cri) throws Exception {
+		return dao.selectBook(cri);
 	}
 
 	@Override
-	public int bookTotalCount() throws Exception {
-		return dao.bookTotalCount();
+	public int bookTotalCount(searchCriteria scri) throws Exception {
+		return dao.bookTotalCount(scri);
 	}
 
 	@Override
