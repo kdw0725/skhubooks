@@ -11,5 +11,9 @@ public class loanController {
 	public String loan() {
 		return "/loan/loan";
 	}
-
+	
+	@RequestMapping(value = "/loan/returnpage", method = RequestMethod.GET)
+	public String returnpage() {
+		return "/loan/returnpage";
+	}
 }

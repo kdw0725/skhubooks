@@ -75,10 +75,10 @@
 
                         <li><a href="/SKHUBooks/book/bookSearch"><h3><p><b>자료 검색</b></p></h3></a></li>
 
-                        <li class="dropdown"><a href="blog.html"><h3><b><p>도서 관리<i class="fa fa-angle-down "></i></p></b></h3></a>
+                        <li class="dropdown"><a><h3><b><p>도서 관리<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
                               <li><a href="/SKHUBooks/loan/loan">대출</a></li>
-                              <li><a href="blogtwo.html">반납</a></li>
+                              <li><a href="/SKHUBooks/loan/returnpage">반납</a></li>
                           </ul>
                         </li>
 
