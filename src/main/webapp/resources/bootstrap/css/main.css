@@ -2300,14 +2300,14 @@ span.stButton_gradient,
   font-size: 16px;
   letter-spacing: 5px;
   background-color: transparent;
-  border: 1px solid #cc9b59;
+  border: 1px solid #20b95d;
   margin-top: 50px;
   margin-bottom: 50px;
 }
 
 .btn-error:hover, .btn-error:focus  {
-  background-color: #cc9b59;
-  border-color:#cc9b59;
+  background-color: #20b95d;
+  border-color:#20b95d;
   color:#fff;
 }
 
@@ -2379,7 +2379,7 @@ span.stButton_gradient,
 
 .btn-error {
   background-color: rgba(0, 0, 0, 0);
-  border: 3px solid #4FCCCD;
+  border: 3px solid #20b95d;
   color: #797979;
   font-size: 16px;
   font-weight: 700;
@@ -2392,8 +2392,8 @@ span.stButton_gradient,
 }
 
 .btn-error:hover, .btn-error:focus  {
-  background-color: #4FCCCD;
-  border-color:#4FCCCD;
+  background-color: #20b95d;
+  border-color:#20b95d;
   color:#fff;
 }
 

@@ -1,4 +1,7 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ 
 <html>
 <head>
 	<link rel="stylesheet" href="/SKHUBooks/resources/bootstrap/css/animate.min.css">
@@ -33,11 +36,19 @@
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
                         <ul class="nav nav-pills">
-                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+							<sec:authorize access="isAnonymous()">
+								<li><a href="/SKHUBooks/member/logIn"><h5><b><x>LOGIN　</x></b></h5></a></li>
+	                            <li><a href="/SKHUBooks/member/signIn"><h5><b><x>JOIN　</x></b></h5></a></li>
+							</sec:authorize>
+							<sec:authorize access="isAuthenticated()">
+								<li>
+									 <form action="/SKHUBooks/logout" method="POST">
+								        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								        	<b><sec:authentication property="principal.username"/></b>님, 반갑습니다. &nbsp;&nbsp;
+								        <button type="submit" class="btn btn-sm btn-default">LOGOUT</button>
+								    </form>
+								</li>
+							</sec:authorize>
                         </ul>
                     </div>
                 </div>
@@ -66,14 +77,14 @@
 
                         <li class="dropdown"><a href="blog.html"><h3><b><p>도서 관리<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
-                              <li><a href="board.html">대출</a></li>
+                              <li><a href="/SKHUBooks/loan/loan">대출</a></li>
                               <li><a href="blogtwo.html">반납</a></li>
                           </ul>
                         </li>
 
                         <li><a href="portfolio.html"><h3><b><p>도서관 안내</p></b></h3></a></li>
 
-                        <li class="dropdown"><a href="shortcodes.html "><h3><b><p>게시판<i class="fa fa-angle-down "></i></p></b></h3></a>
+                        <li class="dropdown"><a><h3><b><p>게시판<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
                               <li><a href="/SKHUBooks/board/boardList">자유게시판</a></li>
                               <li><a href="/SKHUBooks/qna/qnaList">Q & A</a></li>

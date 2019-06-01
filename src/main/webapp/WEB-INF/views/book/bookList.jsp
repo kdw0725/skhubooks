@@ -53,6 +53,13 @@
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
 			<button class="btn btn-default pull-rigth" type="button" onclick="bookInsert()"><span class="glyphicon glyphicon-pencil"></span>신규 등록</button>
 		</sec:authorize>
+		<form action="bookList" class="searching-form">
+			<div class="searchtag">
+			    <i class="fa fa-search"></i>
+				<input type="text" placeholder="검색 내용" class="form-control" style=" height : 50px; padding-left: 50px" name="keyword">
+				<input type="submit" value="검색" class="btn btn-success">
+			</div>
+		</form>
 		<div class="text-center">
 			<ul class="paging">
 				<c:if test="${pageMaker.prev }">

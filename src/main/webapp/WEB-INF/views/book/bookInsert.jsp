@@ -53,7 +53,7 @@
 					<tr>
 						<th style=" width: 100px; text-align: center;vertical-align: middle;">도서 번호</th>
 						<td>
-							<input class="form-control" type="text" required="required" placeholder="도서 번호를 입력하세요" name="book_no">
+							<input class="form-control" type="number" required="required" placeholder="도서 번호를 입력하세요" name="book_no">
 						</td>
 					</tr>
 					

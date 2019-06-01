@@ -15,15 +15,5 @@
 <body>
 <h1 class="title"><b>Main</b></h1>
 <%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
-<sec:authorize access="isAnonymous()">
-    <h5><a href='<c:url value="/member/logIn"/>'>LOGIN</a></h5>
-</sec:authorize>
-<sec:authorize access="isAuthenticated()">
-    <form action="/SKHUBooks/logout" method="POST">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-        <p><sec:authentication property="principal.username"/>님, 반갑습니다.</p>
-        <button type="submit">LOGOUT</button>
-    </form>
-</sec:authorize>
 </body>
 </html>
