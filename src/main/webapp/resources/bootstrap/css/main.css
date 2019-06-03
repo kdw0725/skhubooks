@@ -2864,3 +2864,10 @@ span.stButton_gradient,
 	bottom: 5px;
 	padding: 0 20px;
 }
+
+#distinct{
+	position: absolute;
+    top: 111px;
+    right: 3%;
+}
+}
