@@ -42,4 +42,13 @@
 							MEMBER_ID = #{member_id}
 	</select>
 	
+	<select id="checkPnum" parameterType="Integer" resultType = "Integer">
+		SELECT 
+							COUNT(MEMBER_NO) AS RESULT
+		FROM 
+							MEMBER 
+		WHERE 
+							MEMBER_PNUM = #{member_pnum}
+	</select>
+	
 </mapper>

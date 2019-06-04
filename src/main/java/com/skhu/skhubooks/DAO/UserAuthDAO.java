@@ -27,4 +27,8 @@ public class UserAuthDAO {
 		return sqlSession.selectOne(namespace+".selectUserID", member_id);
 	}
 	
+	public int checkPnum(int member_pnum) throws Exception{
+		return sqlSession.selectOne(namespace+".checkPnum", member_pnum);
+	}
+	
 }

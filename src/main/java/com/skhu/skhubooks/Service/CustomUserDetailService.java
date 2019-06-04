@@ -30,4 +30,8 @@ public class CustomUserDetailService implements UserDetailsService{
 	public int selectUserID(String member_id) throws Exception{
 		return userAuthDAO.selectUserID(member_id);
 	}
+	
+	public int checkPnum(int member_pnum) throws Exception{
+		return userAuthDAO.checkPnum(member_pnum);
+	}
 }
