@@ -34,4 +34,8 @@ public class CustomUserDetailService implements UserDetailsService{
 	public int checkPnum(int member_pnum) throws Exception{
 		return userAuthDAO.checkPnum(member_pnum);
 	}
+	
+	public int checkNo(int member_no) throws Exception{
+		return userAuthDAO.checkNo(member_no);
+	}
 }

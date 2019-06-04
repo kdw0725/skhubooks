@@ -68,9 +68,16 @@ public class memberController {
 	public int checkUserID(CustomUserDetails userDetail, String member_id) throws Exception{
 		return service.selectUserID(member_id);
 	}
+	
 	@RequestMapping(value="/member/checkPnum", method = RequestMethod.POST)
 	@ResponseBody
 	public int checkPnum(CustomUserDetails userDetail, int member_pnum) throws Exception{
 		return service.checkPnum(member_pnum);
+	}
+	
+	@RequestMapping(value="/member/checkMemberNo", method = RequestMethod.POST)
+	@ResponseBody
+	public int checkMemberNo(CustomUserDetails userDetails, int member_no) throws Exception{
+		return service.checkNo(member_no);
 	}
 }

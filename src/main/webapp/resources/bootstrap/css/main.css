@@ -2867,7 +2867,7 @@ span.stButton_gradient,
 
 #distinct{
 	position: absolute;
-    top: 111px;
+    top: 192px;
     right: 3%;
 }
 .newBook{
@@ -2880,6 +2880,11 @@ span.stButton_gradient,
 }
 #pnumcheck{
 	position: absolute;
-    top: 438px;
+    top: 519px;
+    right: 3%;
+}
+#noCheck{
+	position: absolute;
+    top: 111px;
     right: 3%;
 }
