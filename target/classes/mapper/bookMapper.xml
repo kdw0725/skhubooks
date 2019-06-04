@@ -10,9 +10,8 @@
 							A.BOOK_NAME, 
 							A.BOOK_AUTHOR, 
 							A.BOOK_PUBLISHER, 
-							A.BOOK_LOAN,
+							A.MEMBER_NO,
 							DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
-							
 							B.FILE_NAME 
 		FROM 
 							BOOK A
@@ -80,7 +79,7 @@
 							A.BOOK_NAME, 
 							A.BOOK_AUTHOR, 
 							A.BOOK_PUBLISHER, 
-							A.BOOK_LOAN,
+							A.MEMBER_NO,
                             DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
                             B.FILE_NAME,
                             B.FILE_URL

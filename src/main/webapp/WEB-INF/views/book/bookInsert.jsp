@@ -46,7 +46,7 @@
 							<div class="filebox">
 								<label for="ex_file" class="btn btn-default">파일 선택</label>
 								<input class="form-control" disabled="disabled" placeholder="선택된 파일 없음">
-								<input style="width:100%;" type="file" class="upload-hidden" id="ex_file" name="book_img">
+								<input style="width:100%;" type="file" class="upload-hidden" id="ex_file" name="book_img" accept="image/*">
 							</div>
 						</td>
 					</tr>
@@ -76,12 +76,13 @@ $(document).ready(function(){
 	var fileTarget = $('.filebox .upload-hidden'); 
 	
 	fileTarget.on('change', function(){ // 값이 변경되면
-		if(window.FileReader){ // modern browser
+		if(window.FileReader){ // modern brows1er
 			var filename = $(this)[0].files[0].name;
 		}
 		else{
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출  
 		}
+		
 		$(this).siblings('.filebox .form-control').val(filename); 
 	});
 });

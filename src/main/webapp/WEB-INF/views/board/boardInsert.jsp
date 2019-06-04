@@ -10,8 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 class="title"><b>자유 게시판</b></h1>
-<p>skhubooks 자유게시판 입니다.</p>
+<h1 class="title"><b>공지사항</b></h1>
+<p>skhubooks 공지사항 입니다.</p>
 <%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
 <br><br><br><br>
 	<div class="container">
