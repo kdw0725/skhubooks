@@ -54,4 +54,9 @@ public class bookDAOImpl implements bookDAO{
 		return sqlSession.delete(namespace+".delFile", book_no);
 	}
 
+	@Override
+	public List<HashMap<String, Object>> newBook() throws Exception {
+		return sqlSession.selectList(namespace+".newBook");
+	}
+
 }

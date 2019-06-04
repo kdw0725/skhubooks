@@ -64,7 +64,7 @@
 </body>
 <script>
 function gotoHome(){
-	location.href="/SKHUBooks/book/bookList";
+	history.back();
 }
 
 function bookDelete(book_no, file_name){

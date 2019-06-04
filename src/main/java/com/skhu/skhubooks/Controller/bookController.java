@@ -103,7 +103,8 @@ public class bookController {
 	}
 	
 	@RequestMapping(value = "/book/bookSearch", method=RequestMethod.GET)
-	public String bookSearch() throws Exception{
+	public String bookSearch(Model model) throws Exception{
+		model.addAttribute("newBook",service.newBook());
 		return "/book/bookSearch";
 	}
 	

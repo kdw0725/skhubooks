@@ -52,4 +52,9 @@ public class bookServiceImpl implements bookService{
 		return dao.delFile(book_no);
 	}
 
+	@Override
+	public List<HashMap<String, Object>> newBook() throws Exception {
+		return dao.newBook();
+	}
+
 }

@@ -22,12 +22,11 @@
 							A.BOOK_NO = B.BOOK_NO
 		WHERE 
 							A.BOOK_NAME IS NOT NULL
-<!-- 		]]> -->
 		<include refid="search"/>
-<!-- 		<![CDATA[ -->
+		ORDER BY
+							A.BOOK_NAME ASC
 		LIMIT
         					#{pageStart}, #{perPageNum}
-<!--         ]]> -->
 	</select>
 	
 	<select id="bookTotalCount" resultType="Integer" parameterType="hashMap">
@@ -133,4 +132,24 @@
          					BOOK_PUBLISHER LIKE CONCAT('%', #{keyword}, '%')
 		</if>
 	</sql>
+	
+	<select id="newBook" resultType="hashMap">
+		SELECT 
+							A.BOOK_NO AS BOOK_NO,
+							A.BOOK_NAME AS BOOK_NAME, 
+							DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR) AS BOOK_INSERTDATE,
+							B.FILE_NAME AS FILE_NAME
+		FROM 
+							BOOK A
+		INNER JOIN
+							FILE B
+		ON
+							A.BOOK_NO = B.BOOK_NO
+		WHERE 
+							A.BOOK_NO>0
+		ORDER BY
+							BOOK_INSERTDATE DESC
+		LIMIT
+							0,3;
+	</select>
 </mapper>

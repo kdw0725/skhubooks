@@ -36,22 +36,27 @@
           <div class="container">
               <div class="row">
                 <br/><br/>
-                    <h2><strong>이달의 도서</strong></h2>
-                  <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                              <img src="images/home/JAVA Programming.png" alt="">
-                          <p><h4><p>명품 JAVA Programming</p></h4></p>
+                  <h2><strong>신착 도서</strong></h2>
+                  
+                  <c:forEach var="newBook" varStatus="i" items="${newBook }">
+                  <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms" onclick="bookDetail(${newBook.BOOK_NO})">
+	                  <img src="/SKHUBooks/resources/bootstrap/images/upload/${newBook.FILE_NAME }" alt="등록된 이미지가 없습니다." class="newBook">
+	                  <p><h4><p>${newBook.BOOK_NAME }</p></h4></p>
                   </div>
-                  <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                              <img src="images/home/best2.png" alt="">
-                          <p><h4><p>여행의 이유</p></h4></p>
-                  </div>
-                  <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                              <img src="images/home/best3.png" alt="">
-                          <p><h4><p>공부머리 독서법</p></h4></p>
-                  </div>
+                  
+                  </c:forEach>
+                  
+                  
+                  
               </div>
           </div>
       </section>
 	</div>
 </body>
+
+<script>
+function bookDetail(book_no){
+	location.href="/SKHUBooks/book/bookDetail?book_no="+book_no
+}
+</script>
 </html>

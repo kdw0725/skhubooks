@@ -16,5 +16,6 @@ public interface bookService {
 	public HashMap<String, Object> bookDetail(String book_no);
 	public int delBook(String book_no) throws Exception;
 	public int delFile(String book_no) throws Exception;
+	public List<HashMap<String, Object>> newBook() throws Exception;
 
 }
