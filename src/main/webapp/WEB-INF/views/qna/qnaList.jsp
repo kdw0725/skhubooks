@@ -77,7 +77,7 @@
 							</c:if>
 							
 							<sec:authentication property='principal.username' var="logInID"/>
-							<c:if test="${logInID == list.qna_writer }">
+							<c:if test="${logInID == list.qna_writer } ">
 								<td>
 									<div id="contentBtn${list.qna_no }">
 										<input type="button" value="수정" class="btn btn-default pull-right" onclick = "qnaUpdate('${list.qna_no}','${list.qna_content }')">

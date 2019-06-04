@@ -10,8 +10,8 @@
 <title>boardList</title>
 </head>
 <body>
-<h1 class="title"><b>자유 게시판</b></h1>
-<p>skhubooks 자유게시판 입니다.</p>
+<h1 class="title"><b>공지사항</b></h1>
+<p>skhubooks 공지사항 입니다.</p>
 <%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
 <br><br><br><br>
 <div class="container">
@@ -25,17 +25,18 @@
 		
 				
 		 <c:forEach var="list" varStatus="i" items="${list}">
-		 	<tr>
+		 	<tr onclick="boardDetail(${list.board_no})">
 		 		<th scope="row">${list.no }</th>
-				<td><a href="boardDetail?board_no=${list.board_no}">${list.board_title }</a></td>
+				<td><a>${list.board_title }</a></td>
 				<td>${list.board_writer }</td>
 				<td>${list.board_insertdate }</td>
 			</tr>
 		</c:forEach>
 		
 	</table>
-	
-	<button class="btn btn-default pull-rigth" type="button" onclick="boardInsert()"><span class="glyphicon glyphicon-pencil"></span>글쓰기</button>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<button class="btn btn-default pull-rigth" type="button" onclick="boardInsert()"><span class="glyphicon glyphicon-pencil"></span>글쓰기</button>
+	</sec:authorize>
 	<form action="boardList" class="searching-form">
 		<div class="searchtag">
 		    <i class="fa fa-search"></i>
@@ -77,6 +78,10 @@
 <script>
 function boardInsert(){
 	location.href="/SKHUBooks/board/boardInsert";
+}
+
+function boardDetail(board_no){
+	location.href="/SKHUBooks/board/boardDetail?board_no="+board_no;
 }
 </script>
 </html>

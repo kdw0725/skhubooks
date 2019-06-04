@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 class="title"><b>자유 게시판</b></h1>
-<p>skhubooks 자유게시판 입니다.</p>
+<h1 class="title"><b>공지사항</b></h1>
+<p>skhubooks 공지사항 입니다.</p>
 <%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
 <br><br><br><br>
 	<div class="container">
@@ -33,14 +33,16 @@
 					<td class="form-control" style="height: 205px;">${list.board_content }</td>
 				</tr>
 				<tr>
-					<td colspan = "2">
-						<input type="button" class="btn btn-default pull-rigth" onclick="boardUpdate(${list.board_no })" value="수정">
-						<input type="button" class="btn btn-default pull-rigth" onclick="boardDelete(${list.board_no })" value="삭제">
+					<td colspan = "2">						
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<input type="button" class="btn btn-default pull-rigth" onclick="boardUpdate(${list.board_no })" value="수정">
+							<input type="button" class="btn btn-default pull-rigth" onclick="boardDelete(${list.board_no })" value="삭제">
+						</sec:authorize>
 						<input type="button" value="글 목록" class="btn btn-default pull-right" onclick="gotoHome()">
 					</td>
 				</tr>
-			</table>
-		</tbody>
+			</tbody>
+		</table>
 	</div>
 
 </body>
