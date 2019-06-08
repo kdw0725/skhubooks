@@ -39,10 +39,13 @@
 				<tr>
 					<th style="vertical-align : middle;">상태</th>
 					<td style="vertical-align : middle;">
-						<c:if test="${list.BOOK_LOAN }">
-							<blue>대출 가능</blue>
+						<c:if test="${list.MEMBER_NO == null}">
+							<blue style="margin-left: 16%;">대출 가능</blue>
+							<button class="btn btn-default pull-right" onclick="book_reserve(${list.BOOK_NO})">예약하기</button>
+							<sec:authentication property='principal.username' var="logInID"/>
+							<input type="hidden" value="${logInID }" id="logInID">
 						</c:if>
-						<c:if test="${!list.BOOK_LOAN }">
+						<c:if test="${list.MEMBER_NO != null}">
 							<red>대출 불가</red>
 						</c:if>
 					</td>
@@ -53,8 +56,10 @@
 				</tr>
 				<tr>
 					<th colspan="3">
-						<input type="button" class="btn btn-default pull-left" value="수정" onclick="bookUpdate(${list.BOOK_NO })">
-						<input type="button" class="btn btn-default pull-left" value="삭제" onclick="bookDelete('${list.BOOK_NO }','${list.FILE_NAME }')">
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<input type="button" class="btn btn-default pull-left" value="수정" onclick="bookUpdate(${list.BOOK_NO })">
+							<input type="button" class="btn btn-default pull-left" value="삭제" onclick="bookDelete('${list.BOOK_NO }','${list.FILE_NAME }')">
+						</sec:authorize>
 						<input type="button" value="글 목록" class="btn btn-default pull-right" onclick="gotoHome()">
 					</th>
 				</tr>
@@ -75,6 +80,32 @@ function bookDelete(book_no, file_name){
 
 function bookUpdate(book_no){
 	location.href="/SKHUBooks/book/bookUpdate?book_no="+book_no;
+}
+function book_reserve(book_no){
+	if(confirm("도서를 예약하시겠습니까?")){
+		var bookData = {"book_no" : book_no};
+		$.ajax({
+			type : "POST",
+			url : "/SKHUBooks/book/bookReserve",
+			data : bookData,
+			dataType : "json",
+			beforeSend : function(xhr){
+                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+			},
+			success : function(checkResult){
+				if(checkResult == 0){
+					var member_id = $("#logInID").val()
+					location.href="/SKHUBooks/book/bookReservation?book_no="+book_no+"&member_id="+member_id;
+				}
+				else{
+					alert("이미 예약이 되어있는 책입니다.");
+				}
+			},
+			error : function(error){
+				alert("서버가 응답하지 않습니다.\n다시 시도해 주시기 바랍니다.");
+			}
+		});
+	}
 }
 
 

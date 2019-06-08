@@ -59,4 +59,14 @@ public class bookDAOImpl implements bookDAO{
 		return sqlSession.selectList(namespace+".newBook");
 	}
 
+	@Override
+	public Integer checkReserve(Integer book_no) throws Exception {
+		return sqlSession.selectOne(namespace+".checkReserve", book_no);
+	}
+
+	@Override
+	public int bookReserve(HashMap<String, Object> reserve) throws Exception {
+		return sqlSession.update(namespace+".bookReserve", reserve);
+	}
+
 }

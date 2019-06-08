@@ -151,4 +151,22 @@
 		LIMIT
 							0,3;
 	</select>
+	
+	<select id="checkReserve" parameterType="Integer" resultType="Integer">
+		SELECT 
+							COUNT(BOOK_RESERVE) AS RESULT 
+		FROM 
+							BOOK 
+		WHERE 
+							BOOK_NO = #{book_no}
+	</select>
+	
+	<update id="bookReserve" parameterType="hashMap">
+		UPDATE
+							BOOK
+		SET
+							BOOK_RESERVE = #{member_id}
+		WHERE
+							BOOK_NO = #{book_no}
+	</update>
 </mapper>

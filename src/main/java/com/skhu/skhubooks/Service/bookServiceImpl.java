@@ -57,4 +57,14 @@ public class bookServiceImpl implements bookService{
 		return dao.newBook();
 	}
 
+	@Override
+	public Integer checkReserve(Integer book_no) throws Exception {
+		return dao.checkReserve(book_no);
+	}
+
+	@Override
+	public int bookReserve(HashMap<String, Object> reserve) throws Exception {
+		return dao.bookReserve(reserve);
+	}
+
 }

@@ -61,7 +61,7 @@
 							MEMBER_NO = #{member_no}, 
 							BOOK_LOANDATE = NOW(), 
 							BOOK_RETURNDATE = DATE_ADD(NOW(), INTERVAL 7 DAY),
-							BOOK_LOANCOUNT = 1  
+							BOOK_RESERVE = NULL  
 		WHERE 
 							BOOK_NO = #{book_no}
 	</update>
@@ -73,7 +73,7 @@
 							MEMBER_NO = NULL,
 							BOOK_LOANDATE = NULL,
 							BOOK_RETURNDATE = NULL,
-							BOOK_LOANCOUNT = NULL
+							BOOK_RESERVE = NULL
 		WHERE
 							BOOK_NO = #{book_no}
 	</update>

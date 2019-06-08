@@ -2,6 +2,7 @@ package com.skhu.skhubooks.Controller;
 
 
 import java.io.File;
+import java.util.HashMap;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.skhu.skhubooks.Service.bookService;
@@ -106,6 +108,21 @@ public class bookController {
 	public String bookSearch(Model model) throws Exception{
 		model.addAttribute("newBook",service.newBook());
 		return "/book/bookSearch";
+	}
+	
+	@RequestMapping(value = "/book/bookReserve", method = RequestMethod.POST)
+	@ResponseBody
+	public Integer bookReserve(Integer book_no) throws Exception{
+		return service.checkReserve(book_no);
+	}
+	
+	@RequestMapping(value = "/book/bookReservation", method = RequestMethod.GET)
+	public String bookReservation(String member_id, int book_no) throws Exception {
+		HashMap<String, Object> reserve = new HashMap<String,Object>();
+		reserve.put("member_id", member_id);
+		reserve.put("book_no", book_no);
+		service.bookReserve(reserve);
+		return "redirect:/book/bookDetail?book_no="+book_no;
 	}
 	
 }

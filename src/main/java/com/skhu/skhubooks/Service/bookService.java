@@ -17,5 +17,7 @@ public interface bookService {
 	public int delBook(String book_no) throws Exception;
 	public int delFile(String book_no) throws Exception;
 	public List<HashMap<String, Object>> newBook() throws Exception;
+	public Integer checkReserve(Integer book_no) throws Exception;
+	public int bookReserve(HashMap<String, Object> reserve) throws Exception;
 
 }
