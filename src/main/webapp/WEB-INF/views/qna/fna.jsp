@@ -10,7 +10,7 @@
 <body>
 <h1 class="title"><b>자주 하는 질문</b></h1>
 <%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
-</body>
+
 <div class="container">
   <hr/>
    <table class="table table-striped" >
@@ -86,4 +86,6 @@
      </tbody>
    </table>
    </div>
-</html>f
+   	<%@ include file="/WEB-INF/views/include/footer.jsp"%>	
+</body>
+</html>

@@ -15,5 +15,14 @@
 <body>
 <h1 class="title"><b>Main</b></h1>
 <%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
+
+
+
+
+
+
+
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>	
+
 </body>
 </html>

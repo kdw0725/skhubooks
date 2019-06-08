@@ -32,6 +32,8 @@
        </div> <!-- .container -->
      </div> <!-- .hero -->
 </div>
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>	
+
 </body>
 <script>
 $(document).ready(function(){

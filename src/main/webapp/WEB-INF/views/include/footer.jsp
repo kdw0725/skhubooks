@@ -1,7 +1,7 @@
  <footer id="footer">
      <div class="container">
          <div class="row">
-               <img src="/SKHUBooks/resources/bootstrap/images/footer6.png" class="img-responsive inline" alt="">
+<!--                <img src="/SKHUBooks/resources/bootstrap/images/home/footer.png" class="img-responsive inline" alt=""> -->
 
              </div>
              <div class="col-md-4 col-sm-12">

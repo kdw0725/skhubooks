@@ -381,13 +381,13 @@ ul.sub-menu {
 /*************************
 *******Footer******
 **************************/
-
 #footer {
   padding-bottom: 10px;
-  background-image: url(../images/home/footer.png);
-  background-repeat: repeat-x;
   background-position: bottom;
   background-size: contain;
+  background-color: #7ebc5c;
+  height: 200px;
+  margin-top: 50px;
 }
 
 #footer h1{

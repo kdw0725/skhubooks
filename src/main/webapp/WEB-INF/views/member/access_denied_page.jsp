@@ -18,5 +18,7 @@
 	<h2>관리자에게 문의하세요.</h2>
 	<a href="/SKHUBooks/" class="btn btn-error" >RETURN TO THE HOMEPAGE</a>
 </div>
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>	
+
 </body>
 </html>
