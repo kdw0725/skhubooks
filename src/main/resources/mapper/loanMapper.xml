@@ -42,8 +42,7 @@
 							A.BOOK_AUTHOR AS BOOK_AUTHOR, 
 							A.BOOK_PUBLISHER AS BOOK_PUBLISHER, 
 							A.MEMBER_NO AS MEMBER_NO,
-							DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
-							DATE_FORMAT(DATE_ADD(A.BOOK_LOANDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_LOANDATE,
+							DATE_FORMAT(DATE_ADD(A.BOOK_RETURNDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_RETURNDATE,
 							B.FILE_NAME AS FILE_NAME
 		FROM 
 							BOOK A
@@ -61,9 +60,21 @@
 		SET 
 							MEMBER_NO = #{member_no}, 
 							BOOK_LOANDATE = NOW(), 
+							BOOK_RETURNDATE = DATE_ADD(NOW(), INTERVAL 7 DAY),
 							BOOK_LOANCOUNT = 1  
 		WHERE 
 							BOOK_NO = #{book_no}
-		
+	</update>
+	
+	<update id="returnBook" parameterType="Integer">
+		UPDATE
+							BOOK
+		SET
+							MEMBER_NO = NULL,
+							BOOK_LOANDATE = NULL,
+							BOOK_RETURNDATE = NULL,
+							BOOK_LOANCOUNT = NULL
+		WHERE
+							BOOK_NO = #{book_no}
 	</update>
 </mapper>

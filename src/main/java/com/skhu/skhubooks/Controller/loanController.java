@@ -58,5 +58,12 @@ public class loanController {
 		service.bookLoan(vo);
 		return "redirect:/loan/bookCheck?member_no="+vo.getMember_no(); 
 	}
+	
+	@RequestMapping(value = "/loan/bookReturnDo", method = RequestMethod.GET)
+	public String bookReturnDo(Integer book_no) throws Exception{
+		service.returnBook(book_no);
+		return "redirect:/loan/returnpage";
+	}
+	
 }
 

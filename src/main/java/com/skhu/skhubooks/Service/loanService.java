@@ -11,5 +11,6 @@ public interface loanService {
 	public List<HashMap<String, Object>> selectBook(Integer member_no);
 	public Integer memberCount(Integer member_no) throws Exception;
 	public int bookLoan(bookVO vo) throws Exception;
+	public int returnBook(Integer book_no) throws Exception;
 
 }

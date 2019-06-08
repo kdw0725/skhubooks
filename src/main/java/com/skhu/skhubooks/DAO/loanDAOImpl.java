@@ -37,5 +37,10 @@ public class loanDAOImpl implements loanDAO{
 		return sqlSession.update(namespace+".bookLoan", vo);
 	}
 
+	@Override
+	public int returnBook(Integer book_no) throws Exception {
+		return sqlSession.update(namespace+".returnBook", book_no);
+	}
+
 
 }
