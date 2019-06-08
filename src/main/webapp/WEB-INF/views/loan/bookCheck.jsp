@@ -28,14 +28,14 @@
          <a class="logo"><img src="/SKHUBooks/resources/bootstrap/images/logo2.png"></a>
 
          <h1 class="hero-title"><white>도서를 태그해주세요</white></h1>
-         	<form action="bookLoanDo" class="subscribe-form">
+         	<div class="subscribe-form">
 				<div class="control">
 					<i class="fa fa-search"></i>
-					<input type="text" placeholder="도서를 태그해주세요..." class="form-control" style=" height : 50px; padding-left: 50px" name="book_no" autofocus="autofocus">
-					<input type="hidden" value="${list.member_no }" name="member_no">
+					<input type="text" placeholder="도서를 태그해주세요..." class="form-control" style=" height : 50px; padding-left: 50px" name="book_no" autofocus="autofocus" id="bookNo">
+					<input type="hidden" value="${list.member_no }" name="member_no" id="member_no">
 			    	<button type="button" class="btn btn-success" style="position: absolute;top: 5px;right: 5px;bottom: 5px;padding: 0 20px;">Search</button>
 				</div>
-			</form>
+			</div>
        </div> <!-- .container -->
      </div> <!-- .hero -->
      <br><br><br>
@@ -103,6 +103,35 @@
     </div>
 </body>
 <script>
-
+$(document).ready(function(){
+	$("#bookNo").keypress(function(e){
+		if(e.keyCode == 13){
+			e.preventDefault();
+			var book_no = $("#bookNo").val();
+			var bookData = {"book_no" : book_no};
+			$.ajax({
+				type : "POST",
+				url : "/SKHUBooks/loan/reserCheck",
+				data : bookData,
+				dataType : "json",
+				beforeSend : function(xhr){
+	                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+				},
+				success : function(checkResult){
+					if(checkResult == 0){
+						var member_no = $("#member_no").val();
+						location.href="/SKHUBooks/loan/bookLoanDo?member_no="+member_no+"&book_no="+book_no;
+					}
+					else{
+						alert("예약이 되어있는 책입니다.");
+					}
+				},
+				error : function(error){
+					alert("서버가 응답하지 않습니다,\n다시 시도해 주시기 바랍니다.");
+				}
+			});
+		}
+	});
+});
 </script>
 </html>

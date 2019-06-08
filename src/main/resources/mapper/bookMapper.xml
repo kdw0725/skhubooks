@@ -11,6 +11,7 @@
 							A.BOOK_AUTHOR, 
 							A.BOOK_PUBLISHER, 
 							A.MEMBER_NO,
+							A.BOOK_RESERVE,
 							DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
 							B.FILE_NAME 
 		FROM 
@@ -80,6 +81,7 @@
 							A.BOOK_AUTHOR, 
 							A.BOOK_PUBLISHER, 
 							A.MEMBER_NO,
+							A.BOOK_RESERVE,
                             DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
                             B.FILE_NAME,
                             B.FILE_URL

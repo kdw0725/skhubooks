@@ -42,10 +42,8 @@ $(document).ready(function(){
 		if(e.keyCode == 13){
 			e.preventDefault();
 			var member_no = $("#cardNo").val();
-			alert(member_no);
 			var memberData = {"member_no" : member_no};
 			if(member_no.length == 9){
-				alert(member_no);
 				$.ajax({
 					type : "POST",
 					url : "/SKHUBooks/loan/idcheck",

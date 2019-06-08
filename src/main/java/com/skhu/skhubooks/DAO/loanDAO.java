@@ -11,5 +11,6 @@ public interface loanDAO {
 	public Integer memberCount(Integer member_no) throws Exception;
 	public int bookLoan(bookVO vo) throws Exception;
 	public int returnBook(Integer book_no) throws Exception;
+	public Integer reserCheck(Integer book_no) throws Exception; 
 	
 }

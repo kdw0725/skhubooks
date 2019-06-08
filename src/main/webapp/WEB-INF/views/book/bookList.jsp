@@ -40,10 +40,13 @@
 					<td style="vertical-align : middle;">${list.BOOK_AUTHOR }</td>
 					<td style="vertical-align : middle;">${list.BOOK_PUBLISHER }</td>
 					<td style="vertical-align : middle;">
-						<c:if test="${list.MEMBER_NO == null}">
+						<c:if test="${list.MEMBER_NO == null && list.BOOK_RESERVE == null}">
 							<blue>대출 가능</blue>
 						</c:if>
-						<c:if test="${list.MEMBER_NO != null}">
+						<c:if test="${list.BOOK_RESERVE != null }">
+							<p>예약중</p>
+						</c:if>
+						<c:if test="${list.MEMBER_NO != null }">
 							<red>대출 불가</red>
 						</c:if>
 					</td>

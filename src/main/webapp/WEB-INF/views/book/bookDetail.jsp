@@ -39,11 +39,14 @@
 				<tr>
 					<th style="vertical-align : middle;">상태</th>
 					<td style="vertical-align : middle;">
-						<c:if test="${list.MEMBER_NO == null}">
+						<c:if test="${list.MEMBER_NO == null && list.BOOK_RESERVE == null}">
 							<blue style="margin-left: 16%;">대출 가능</blue>
 							<button class="btn btn-default pull-right" onclick="book_reserve(${list.BOOK_NO})">예약하기</button>
 							<sec:authentication property='principal.username' var="logInID"/>
 							<input type="hidden" value="${logInID }" id="logInID">
+						</c:if>
+						<c:if test="${list.BOOK_RESERVE !=null }">
+							<p>예약중</p>
 						</c:if>
 						<c:if test="${list.MEMBER_NO != null}">
 							<red>대출 불가</red>

@@ -77,4 +77,13 @@
 		WHERE
 							BOOK_NO = #{book_no}
 	</update>
+	
+	<select id="reserCheck" parameterType="Integer" resultType="Integer">
+		SELECT 
+							COUNT(BOOK_RESERVE) 
+		FROM 
+							BOOK 
+		WHERE 
+							BOOK_NO = #{book_no}
+	</select>
 </mapper>

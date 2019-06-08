@@ -65,5 +65,11 @@ public class loanController {
 		return "redirect:/loan/returnpage";
 	}
 	
+	@RequestMapping(value = "/loan/reserCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public Integer reserCheck(Integer book_no) throws Exception{
+		return service.reserCheck(book_no);
+	}
+	
 }
 
