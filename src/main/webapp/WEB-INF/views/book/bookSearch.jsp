@@ -26,7 +26,7 @@
 				<form action="bookList" class="subscribe-form">
 					<div class="control">
 						<i class="fa fa-search"></i>
-						<input type="text" placeholder="Search for the book..." class="form-control" style=" height : 50px; padding-left: 50px" name="keyword">
+						<input type="text" placeholder="Search for the book..." class="form-control" style=" height : 50px; padding-left: 50px" name="keyword" autofocus="autofocus">
            				<input type="submit" value="Search" class="btn btn-success">
 					</div>
 				</form>

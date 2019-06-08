@@ -10,7 +10,9 @@
 							MEMBER_NO,
 							MEMBER_NAME, 
 							MEMBER_ID, 
-							MEMBER_PW, 
+							MEMBER_PW,
+							MEMBER_DEPARTMENT,
+							MEMBER_GRADE,
 							MEMBER_BIRTH, 
 							MEMBER_PNUM) 
 		VALUES
@@ -19,6 +21,8 @@
 							#{ member_name},
 							#{ member_id},
 							#{ member_pw},
+							#{ member_department},
+							#{ member_grade},
 							#{ member_birth},
 							#{ member_pnum}
 							)

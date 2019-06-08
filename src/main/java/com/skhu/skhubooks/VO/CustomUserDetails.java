@@ -12,7 +12,7 @@ import lombok.ToString;
 @SuppressWarnings("serial")
 @ToString
 public class CustomUserDetails implements UserDetails{
-	private int	    member_no;
+	private int     member_no;
 	private String  member_name;
 	private String  member_id;
 	private String  member_pw;
@@ -20,6 +20,8 @@ public class CustomUserDetails implements UserDetails{
 	private int     member_pnum;
 	private String  member_role;
 	private boolean member_enabled;
+	private String  member_department;
+	private int		member_grade;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -81,4 +83,17 @@ public class CustomUserDetails implements UserDetails{
 	public void setMember_pnum(int member_pnum) {
 		this.member_pnum = member_pnum;
 	}
+	public String getMember_department() {
+		return member_department;
+	}
+	public void setMember_department(String member_department) {
+		this.member_department = member_department;
+	}
+	public int getMember_grade() {
+		return member_grade;
+	}
+	public void setMember_grade(int member_grade) {
+		this.member_grade = member_grade;
+	}
+	
 }

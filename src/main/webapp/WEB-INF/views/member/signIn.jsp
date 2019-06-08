@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputName">학번</label>
-                    <input type="number" name = "member_no" class="form-control" id="inputNo" placeholder="학번을 입력해 주세요" required="required">
+                    <input type="number" name = "member_no" class="form-control" id="inputNo" placeholder="학번을 입력해 주세요" required="required" maxlength="9">
                     <button class="btn btn-default pull-right" id="noCheck">중복 확인</button>
                     <div id="nocheck"></div>
                 </div>
@@ -48,13 +48,44 @@
                     <input type="password" name="member_pw_check" class="form-control" id="inputPasswordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요" required="required">
                     <div id="passwordcheck"></div>
                 </div>
+                
                 <div class="form-group">
-                        <label for="inputtelBIRTH">생년월일</label>
-                        <input type="number" name="member_birth" class="form-control" id="inputBirth" placeholder="생년월일를 6자리로 입력해 주세요" required="required">
-                    </div>
+	                <label for="inputDepart">학과</label>
+	                <select name="member_department" class="form-control">
+	                	<option value="0">=========      과를 선택해주세요      =========</option>
+	                	<option value="정보통신공학과">정보통신공학과</option>
+	                	<option value="소프트웨어공학과">소프트웨어공학과</option>
+	                	<option value="글로컬 IT학과">글로컬 IT학과</option>
+	                	<option value="컴퓨터공학과">컴퓨터공학과</option>
+	                	<option value="디지털컨텐츠학과">디지털컨텐츠학과</option>
+	                	<option value="사회과학부">사회과학부</option>
+	                	<option value="신문방송학과">신문방송학과</option>
+	                	<option value="사회복지과">사회복지과</option>
+	                	<option value="경영학부">경영학부</option>
+	                	<option value="영어학과">영어학과</option>
+	                	<option value="중어중국학과">중어중국학과</option>
+	                	<option value="일어일본학과">일어일본학과</option>
+	                	<option value="신학과">신학과</option>
+	                </select>
+                </div>
+                <div class="form-group">
+	                <label for="inputGrade">학년</label>
+	                <select name="member_grade" class="form-control">
+	                	<option value="0">=========      학년을 선택해주세요      =========</option>
+	                	<option value="1">1학년</option>
+	                	<option value="2">2학년</option>
+	                	<option value="3">3학년</option>
+	                	<option value="4">4학년</option>
+	                </select>
+                </div>
+                
+                <div class="form-group">
+	                <label for="inputtelBIRTH">생년월일</label>
+	                <input type="number" name="member_birth" class="form-control" id="inputBirth" placeholder="생년월일를 6자리로 입력해 주세요" required="required" maxlength="6">
+                </div>
                 <div class="form-group">
                     <label for="inputMobile">휴대폰 번호</label>
-                    <input type="number" name="member_pnum" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해 주세요(ex.01083356191)" required="required">
+                    <input type="number" name="member_pnum" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해 주세요(ex.01083356191)" required="required" maxlength="11">
                     <button class="btn btn-default pull-right" id="pnumcheck">중복 확인</button>
                 </div>
 
@@ -77,7 +108,8 @@
 
     </article>
 	
-
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>	
+	
 </body>
 
 <script>
