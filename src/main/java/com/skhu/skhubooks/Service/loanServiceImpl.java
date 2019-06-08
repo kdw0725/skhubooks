@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.skhu.skhubooks.DAO.loanDAO;
 import com.skhu.skhubooks.VO.CustomUserDetails;
+import com.skhu.skhubooks.VO.bookVO;
 
 @Service
 public class loanServiceImpl implements loanService{
@@ -21,13 +22,18 @@ public class loanServiceImpl implements loanService{
 	}
 
 	@Override
-	public List<HashMap<String, Object>> selectBook() {
-		return dao.selectBook();
+	public List<HashMap<String, Object>> selectBook(Integer member_no) {
+		return dao.selectBook(member_no);
 	}
 
 	@Override
 	public Integer memberCount(Integer member_no) throws Exception {
 		return dao.memberCount(member_no);
+	}
+
+	@Override
+	public int bookLoan(bookVO vo) throws Exception {
+		return dao.bookLoan(vo);
 	}
 
 

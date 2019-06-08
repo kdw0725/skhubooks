@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.skhu.skhubooks.VO.CustomUserDetails;
+import com.skhu.skhubooks.VO.bookVO;
 
 @Repository
 public class loanDAOImpl implements loanDAO{
@@ -22,13 +23,18 @@ public class loanDAOImpl implements loanDAO{
 	}
 
 	@Override
-	public List<HashMap<String, Object>> selectBook() {
-		return sqlSession.selectList(namespace+".selectBook");
+	public List<HashMap<String, Object>> selectBook(Integer member_no) {
+		return sqlSession.selectList(namespace+".selectBook", member_no);
 	}
 
 	@Override
 	public Integer memberCount(Integer member_no) throws Exception {
 		return sqlSession.selectOne(namespace+".memberCount", member_no);
+	}
+
+	@Override
+	public int bookLoan(bookVO vo) throws Exception {
+		return sqlSession.update(namespace+".bookLoan", vo);
 	}
 
 

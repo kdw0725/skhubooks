@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skhu.skhubooks.Service.loanService;
 import com.skhu.skhubooks.VO.CustomUserDetails;
+import com.skhu.skhubooks.VO.bookVO;
 
 @Controller
 public class loanController {
@@ -21,14 +22,19 @@ public class loanController {
 	}
 	
 	@RequestMapping(value = "/loan/bookCheck", method = RequestMethod.GET)
-	public String bookCheck(Model model, CustomUserDetails userDetails, String member_no) {
-		if(member_no != null) {
+	public String bookCheck(Model model, CustomUserDetails userDetails, Integer member_no) {
+		if(member_no != 0) {
 			CustomUserDetails list = service.selectByMemberNo(userDetails);
 			list.setMember_no(list.getMember_no());
 			model.addAttribute("list", list);
+			model.addAttribute("lentBook",service.selectBook(member_no));
 			model.addAttribute("id",list.getUsername());
+			return "/loan/bookCheck";
 		}
-		return "/loan/bookCheck";
+		else {
+			return "/loan/noMember";
+		}
+		
 	}
 	
 	@RequestMapping(value="/loan/idcheck", method = RequestMethod.POST)
@@ -45,6 +51,12 @@ public class loanController {
 	@RequestMapping(value = "/loan/noMember", method = RequestMethod.GET)
 	public String noMember() {
 		return "/loan/noMember";
+	}
+	
+	@RequestMapping(value = "/loan/bookLoanDo", method = RequestMethod.GET)
+	public String bookLoanDo(bookVO vo) throws Exception {
+		service.bookLoan(vo);
+		return "redirect:/loan/bookCheck?member_no="+vo.getMember_no(); 
 	}
 }
 

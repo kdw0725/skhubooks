@@ -35,15 +35,16 @@
 							MEMBER_NO = #{member_no}
 	</select>
 	
-	<select id="selectBook" resultType="hashMap">
+	<select id="selectBook" resultType="hashMap" parameterType="Integer">
 		SELECT 
-							A.BOOK_NO,
-							A.BOOK_NAME, 
-							A.BOOK_AUTHOR, 
-							A.BOOK_PUBLISHER, 
-							A.MEMBER_NO,
+							A.BOOK_NO AS BOOK_NO,
+							A.BOOK_NAME AS BOOK_NAME, 
+							A.BOOK_AUTHOR AS BOOK_AUTHOR, 
+							A.BOOK_PUBLISHER AS BOOK_PUBLISHER, 
+							A.MEMBER_NO AS MEMBER_NO,
 							DATE_FORMAT(DATE_ADD(A.BOOK_INSERTDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_INSERTDATE,
-							B.FILE_NAME 
+							DATE_FORMAT(DATE_ADD(A.BOOK_LOANDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_LOANDATE,
+							B.FILE_NAME AS FILE_NAME
 		FROM 
 							BOOK A
 		INNER JOIN
@@ -51,6 +52,18 @@
 		ON
 							A.BOOK_NO = B.BOOK_NO
 		WHERE 
-							A.BOOK_NAME IS NOT NULL
+							A.MEMBER_NO = #{member_no}
 	</select>
+	
+	<update id="bookLoan" parameterType="bookVO">
+		UPDATE 
+							BOOK 
+		SET 
+							MEMBER_NO = #{member_no}, 
+							BOOK_LOANDATE = NOW(), 
+							BOOK_LOANCOUNT = 1  
+		WHERE 
+							BOOK_NO = #{book_no}
+		
+	</update>
 </mapper>
