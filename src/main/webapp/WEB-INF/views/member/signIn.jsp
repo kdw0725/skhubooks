@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<title>회원가입</title>
+    <title>SKHUBooks</title>
 </head>
 <body>
 <h1 class="title"><b>회원가입</b></h1>

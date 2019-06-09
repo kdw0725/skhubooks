@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자주하는 질문</title>
+    <title>SKHUBooks</title>
 </head>
 <body>
 <h1 class="title"><b>자주 하는 질문</b></h1>

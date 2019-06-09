@@ -47,5 +47,10 @@ public class loanDAOImpl implements loanDAO{
 		return sqlSession.selectOne(namespace+".reserCheck", book_no);
 	}
 
+	@Override
+	public Integer isReserve(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectOne(namespace+".isReserve", map);
+	}
+
 
 }

@@ -1,5 +1,7 @@
 package com.skhu.skhubooks.Controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,6 +71,15 @@ public class loanController {
 	@ResponseBody
 	public Integer reserCheck(String book_no) throws Exception{
 		return service.reserCheck(book_no);
+	}
+	
+	@RequestMapping(value="/loan/isReserve", method = RequestMethod.POST)
+	@ResponseBody
+	public Integer isReserve(String book_no, String member_id) throws Exception{
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("book_no", book_no);
+		map.put("member_id", member_id);
+		return service.isReserve(map);
 	}
 	
 }

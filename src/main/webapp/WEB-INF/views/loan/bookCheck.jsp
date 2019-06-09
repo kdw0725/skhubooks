@@ -12,7 +12,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <meta charset="UTF-8">
-<title>QnA</title>
+    <title>SKHUBooks</title>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -125,11 +125,38 @@ $(document).ready(function(){
 						location.href="/SKHUBooks/loan/bookLoanDo?member_no="+member_no+"&book_no="+book_no;
 					}
 					else{
-						alert("asdf");
+						var member_id = $("#member_id").val();
+						memberData = {"book_no" : book_no,
+									  "member_id" : member_id
+									};
+						$.ajax({
+							type : "POST",
+							url : "/SKHUBooks/loan/isReserve",
+							data : memberData,
+							dataType : "json",
+							beforeSend : function(xhr){
+								//데이터 전송 전에 헤더에 csrf 값 설정
+				                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+							},
+							success : function(Result){
+								if(Result == 1){
+									alert("예약한거 대여한다!!!!!!");
+									var member_no = $("#member_no").val();
+									location.href="/SKHUBooks/loan/bookLoanDo?member_no="+member_no+"&book_no="+book_no;
+								}
+								else{
+									alert("예약된 도서입니다.");
+								}
+								
+							},
+							error : function(error){
+								alert("서버가 응답하지 않습니다. \n다시 시도해 주시기 바랍니다.");
+							}
+						});
 					}
 				},
 				error : function(error){
-					alert("서버가 응답하지 않습니다,\n다시 시도해 주시기 바랍니다.");
+					alert("서버가 응답하지 않습니다.\n다시 시도해 주시기 바랍니다.");
 				}
 			});
 		}

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+    <title>SKHUBooks</title>
 </head>
 <body>
 <h1 class="title"><b>공지사항</b></h1>

@@ -10,7 +10,7 @@
 <head>
 <link rel="stylesheet" href="/SKHUBooks/resources/bootstrap/css/login.min.css">
 <meta charset="UTF-8">
-<title>logIn</title>
+    <title>SKHUBooks</title>
 </head>
 <body>
 	<div class="form">

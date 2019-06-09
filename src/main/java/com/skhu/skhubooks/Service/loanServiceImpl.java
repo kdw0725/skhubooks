@@ -46,5 +46,10 @@ public class loanServiceImpl implements loanService{
 		return dao.reserCheck(book_no);
 	}
 
+	@Override
+	public Integer isReserve(HashMap<String, Object> map) throws Exception {
+		return dao.isReserve(map);
+	}
+
 
 }

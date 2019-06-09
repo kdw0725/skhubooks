@@ -113,7 +113,23 @@
 	<img alt="" src="/SKHUBooks/resources/bootstrap/images/home/slider-bg.png" style="max-width: 100%;">
 </section>
 
-<section id="services" > <!-- style="background: #f5f0c5;" -->
+
+	<section id="action" class="responsive">
+        <div class="vertical-center">
+             <div class="container">
+                <div class="row">
+                    <div class="action take-tour">
+                        <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                        </div>
+
+                        <div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+   <section id="services" > <!-- style="background: #f5f0c5;" -->
         <div class="container">
             <div class="row">
               <br/><br/>
@@ -128,7 +144,7 @@
             </div>
         </div>
     </section>
-	<section id="action" class="responsive">
+    <section id="action" class="responsive">
         <div class="vertical-center">
              <div class="container">
                 <div class="row">

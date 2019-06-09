@@ -86,4 +86,15 @@
 		WHERE 
 							BOOK_NO = #{book_no}
 	</select>
+	
+	<select id="isReserve" parameterType="hashMap" resultType="Integer">
+		SELECT 
+							COUNT(BOOK_NO) 
+		FROM 
+							BOOK 
+		WHERE 
+							BOOK_RESERVE = #{member_id} 
+		AND 
+							BOOK_NO = #{book_no}
+	</select>
 </mapper>

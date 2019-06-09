@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>access_denied_page</title>
+    <title>SKHUBooks</title>
 </head>
 <body>
 <h1 class="title"><b>경고</b></h1>

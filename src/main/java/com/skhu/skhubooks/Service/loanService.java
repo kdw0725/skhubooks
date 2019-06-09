@@ -13,5 +13,6 @@ public interface loanService {
 	public int bookLoan(bookVO vo) throws Exception;
 	public int returnBook(String book_no) throws Exception;
 	public Integer reserCheck(String book_no) throws Exception; 
+	public Integer isReserve(HashMap<String, Object> map) throws Exception;
 
 }
