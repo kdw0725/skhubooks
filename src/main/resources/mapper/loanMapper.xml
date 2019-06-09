@@ -66,7 +66,7 @@
 							BOOK_NO = #{book_no}
 	</update>
 	
-	<update id="returnBook" parameterType="Integer">
+	<update id="returnBook" parameterType="String">
 		UPDATE
 							BOOK
 		SET
@@ -78,7 +78,7 @@
 							BOOK_NO = #{book_no}
 	</update>
 	
-	<select id="reserCheck" parameterType="Integer" resultType="Integer">
+	<select id="reserCheck" parameterType="String" resultType="Integer">
 		SELECT 
 							COUNT(BOOK_RESERVE) 
 		FROM 

@@ -66,4 +66,54 @@
 							MEMBER_NO = #{member_no}
 	</select>
 	
+	<select id="selectByMemberId" parameterType="String" resultType="memberVO">
+		SELECT 
+							MEMBER_NO, 
+							MEMBER_NAME,
+							MEMBER_ID,
+							MEMBER_BIRTH, 
+							MEMBER_PNUM,
+							MEMBER_DEPARTMENT,
+							MEMBER_GRADE
+		FROM 
+							MEMBER
+		WHERE
+							MEMBER_ID = #{member_id}
+	</select>
+	
+	<select id="selectBook" parameterType="Integer" resultType="hashMap">
+		SELECT 
+							A.BOOK_NO AS BOOK_NO,
+							A.BOOK_NAME AS BOOK_NAME, 
+							A.BOOK_AUTHOR AS BOOK_AUTHOR, 
+							A.BOOK_PUBLISHER AS BOOK_PUBLISHER, 
+							A.MEMBER_NO AS MEMBER_NO,
+							DATE_FORMAT(DATE_ADD(A.BOOK_RETURNDATE, INTERVAL 9 HOUR),  '%Y-%m-%d') AS BOOK_RETURNDATE,
+							B.FILE_NAME AS FILE_NAME
+		FROM 
+							BOOK A
+		INNER JOIN
+							FILE B
+		ON
+							A.BOOK_NO = B.BOOK_NO
+		WHERE 
+							A.MEMBER_NO = #{member_no}
+	</select>
+	
+	<select id="selectNotice" resultType="boardVO">
+		SELECT
+                            @rownum:=@rownum+1 No,
+                            BOARD_NO,
+                            BOARD_TITLE
+        FROM 
+                            BOARD_LIST,
+                            (SELECT @rownum:=0) r
+        WHERE               
+        					BOARD_NO > 0
+        ORDER BY
+							NO DESC
+		LIMIT
+							0,5
+	</select>
+	
 </mapper>

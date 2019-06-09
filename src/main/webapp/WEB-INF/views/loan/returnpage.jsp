@@ -21,11 +21,12 @@
      <div class="hero">
        <div class="container">
          <a class="logo"><img src="/SKHUBooks/resources/bootstrap/images/logo2.png"></a>
+         
          <h1 class="hero-title"><white>반납할 도서를 태그해주세요</white></h1>
          	<div class="subscribe-form">
 				<div class="control">
 					<i class="fa fa-search"></i>
-					<input type="text" placeholder="반납할 도서를 태그해주세요..." class="form-control" style=" height : 50px; padding-left: 50px" name="book_no" autofocus="autofocus" id="bookNo">
+					<input type="text" placeholder="도서를 태그해주세요..." class="form-control" style=" height : 50px; padding-left: 50px" name="book_no" autofocus="autofocus" id="bookNo">
 			    	<button type="button" class="btn btn-success" style="position: absolute;top: 5px;right: 5px;bottom: 5px;padding: 0 20px;">Search</button>
 				</div>
 			</div>
@@ -39,6 +40,7 @@
 $(document).ready(function(){
 	$("#bookNo").keypress(function(e){
 		if(e.keyCode == 13){
+			e.preventDefault();
 			var book_no =  $("#bookNo").val();
 			location.href="/SKHUBooks/loan/bookReturnDo?book_no="+book_no;
 			alert("반납되었습니다.");

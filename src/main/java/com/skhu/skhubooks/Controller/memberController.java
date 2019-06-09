@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skhu.skhubooks.Service.CustomUserDetailService;
+import com.skhu.skhubooks.Service.bookService;
 import com.skhu.skhubooks.VO.CustomUserDetails;
 
 /**
@@ -25,9 +26,13 @@ public class memberController {
 	@Autowired
 	BCryptPasswordEncoder passEncoder;
 	
+	@Autowired
+	bookService bservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Model model) throws Exception {
+		model.addAttribute("newBook",bservice.newBook());
+		model.addAttribute("list", service.selectNotice());
 		return "home";
 	}
 	
@@ -79,5 +84,20 @@ public class memberController {
 	@ResponseBody
 	public int checkMemberNo(CustomUserDetails userDetails, int member_no) throws Exception{
 		return service.checkNo(member_no);
+	}
+	
+	@RequestMapping(value="/member/myInfo", method = RequestMethod.GET)
+	public String myInfo(Model model, CustomUserDetails userDetails, String member_id) throws Exception {
+		if(member_id != null) {
+			userDetails = service.selectByMemberId(member_id);
+			model.addAttribute("member", userDetails);
+			model.addAttribute("id", member_id);
+			model.addAttribute("lentBook", service.selectBook(userDetails.getMember_no()));
+			return "/member/myInfo";
+		}
+		else {
+			return "/loan/noMember";
+		}
+		
 	}
 }

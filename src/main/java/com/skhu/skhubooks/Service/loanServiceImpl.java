@@ -37,12 +37,12 @@ public class loanServiceImpl implements loanService{
 	}
 
 	@Override
-	public int returnBook(Integer book_no) throws Exception {
+	public int returnBook(String book_no) throws Exception {
 		return dao.returnBook(book_no);
 	}
 
 	@Override
-	public Integer reserCheck(Integer book_no) throws Exception {
+	public Integer reserCheck(String book_no) throws Exception {
 		return dao.reserCheck(book_no);
 	}
 

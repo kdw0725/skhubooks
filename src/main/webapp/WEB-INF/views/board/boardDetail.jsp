@@ -61,7 +61,7 @@ function boardDelete(board_no){
 	return false;
 }
 
-function gotoHome(){
+function gotoHome(board_no){
 	location.href = "/SKHUBooks/board/boardList?page=1";
 }
 </script>

@@ -1,12 +1,14 @@
 package com.skhu.skhubooks.DAO;
 
-import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.skhu.skhubooks.VO.CustomUserDetails;
+import com.skhu.skhubooks.VO.boardVO;
 
 @Repository("userAuthDAO")
 public class UserAuthDAO {
@@ -33,6 +35,18 @@ public class UserAuthDAO {
 	
 	public int checkNo(int member_no) throws Exception{
 		return sqlSession.selectOne(namespace+".checkNo", member_no);
+	}
+	
+	public CustomUserDetails selectByMemberId(String member_id) throws Exception{
+		return sqlSession.selectOne(namespace+".selectByMemberId", member_id);
+	}
+	
+	public List<HashMap<String, Object>> selectBook (Integer member_no) throws Exception{
+		return sqlSession.selectList(namespace+".selectBook", member_no);
+	}
+	
+	public List<boardVO> selectNotice() throws Exception{
+		return sqlSession.selectList(namespace+".selectNotice");
 	}
 	
 }

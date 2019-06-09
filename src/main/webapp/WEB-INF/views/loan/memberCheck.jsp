@@ -17,7 +17,6 @@
 <h1 class="title"><b>대출</b></h1>
 	<p>도서 대출 페이지 입니다.</p>
 	<%@ include file="/WEB-INF/views/include/headinclude2.jsp"%>
-	<br><br><br><br>
 	<div class="site-content">
      <div class="hero">
        <div class="container">

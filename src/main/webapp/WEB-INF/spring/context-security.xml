@@ -20,6 +20,7 @@
         	<security:intercept-url pattern="/book/bookInsert" access="hasRole('ROLE_ADMIN')"/>
         	<security:intercept-url pattern="/book/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
         	<security:intercept-url pattern="/include/**" access="permitAll" />
+        	<security:intercept-url pattern="/member/myInfo" access="hasAnyRole('ROLE_USER','ROLE_GUEST')" />
         	<security:intercept-url pattern="/member/**" access="isAnonymous()" />
         	<security:intercept-url pattern="/checkMemberID" access = "permitAll"/>
         	<security:intercept-url pattern="/webjars/**" access = "permitAll"/>

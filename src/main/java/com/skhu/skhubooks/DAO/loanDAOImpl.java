@@ -38,12 +38,12 @@ public class loanDAOImpl implements loanDAO{
 	}
 
 	@Override
-	public int returnBook(Integer book_no) throws Exception {
+	public int returnBook(String book_no) throws Exception {
 		return sqlSession.update(namespace+".returnBook", book_no);
 	}
 
 	@Override
-	public Integer reserCheck(Integer book_no) throws Exception {
+	public Integer reserCheck(String book_no) throws Exception {
 		return sqlSession.selectOne(namespace+".reserCheck", book_no);
 	}
 

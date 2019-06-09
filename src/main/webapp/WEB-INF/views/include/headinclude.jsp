@@ -72,21 +72,29 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/SKHUBooks/"><h3><b><x>Home</x></b></h3></a></li>
+                        <li><a href="/SKHUBooks/board/boardList"><h3><b><p>공지사항</p></b></h3></a></li>
 
                         <li><a href="/SKHUBooks/book/bookSearch"><h3><p><b>자료 검색</b></p></h3></a></li>
-
-                        <li class="dropdown"><a><h3><b><p>도서 관리<i class="fa fa-angle-down "></i></p></b></h3></a>
-                          <ul role="menu" class="sub-menu">
-                              <li><a href="/SKHUBooks/loan/memberCheck">대출</a></li>
-                              <li><a href="/SKHUBooks/loan/returnpage">반납</a></li>
-                          </ul>
-                        </li>
-
-                        <li><a href="portfolio.html"><h3><b><p>도서관 안내</p></b></h3></a></li>
+						
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+	                        <li class="dropdown"><a><h3><b><p>도서 관리<i class="fa fa-angle-down "></i></p></b></h3></a>
+	                          <ul role="menu" class="sub-menu">
+	                              <li><a href="/SKHUBooks/loan/memberCheck">대출</a></li>
+	                              <li><a href="/SKHUBooks/loan/returnpage">반납</a></li>
+	                          </ul>
+	                        </li>
+                        </sec:authorize>
+						<sec:authorize access="hasRole('ROLE_USER')">
+							<sec:authentication property='principal.username' var="logInID"/>
+							<li><a href="/SKHUBooks/member/myInfo?member_id=${logInID }"><h3><b><p>내 정보 확인</p></b></h3></a></li>
+						</sec:authorize>
+                        
+                        <sec:authorize access="isAnonymous()">
+							<li><a href="/SKHUBooks/member/myInfo"><h3><b><p>내 정보 확인</p></b></h3></a></li>
+						 </sec:authorize>
 
                         <li class="dropdown"><a><h3><b><p>게시판<i class="fa fa-angle-down "></i></p></b></h3></a>
                           <ul role="menu" class="sub-menu">
-                              <li><a href="/SKHUBooks/board/boardList">공지사항</a></li>
                               <li><a href="/SKHUBooks/qna/qnaList">Q & A</a></li>
                               <li><a href="/SKHUBooks/qna/fna">자주 하는 질문</a></li>
                           </ul></li>

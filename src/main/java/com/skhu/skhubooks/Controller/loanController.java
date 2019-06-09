@@ -60,14 +60,14 @@ public class loanController {
 	}
 	
 	@RequestMapping(value = "/loan/bookReturnDo", method = RequestMethod.GET)
-	public String bookReturnDo(Integer book_no) throws Exception{
+	public String bookReturnDo(String book_no) throws Exception{
 		service.returnBook(book_no);
 		return "redirect:/loan/returnpage";
 	}
 	
 	@RequestMapping(value = "/loan/reserCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public Integer reserCheck(Integer book_no) throws Exception{
+	public Integer reserCheck(String book_no) throws Exception{
 		return service.reserCheck(book_no);
 	}
 	
