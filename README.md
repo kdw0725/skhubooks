@@ -14,10 +14,10 @@
     - 회원가입
 - 공지
 
-##개발 환경
-- Spring
+## 개발 환경
+- Spring(Maven)
 - MySQL
 
-##개발자
+## 개발자
 - front 박예빈
 - back 김동욱
