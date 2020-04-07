@@ -17,6 +17,7 @@
 ## 개발 환경
 - Spring(Maven)
 - MySQL
+- AWS(EC2, RDS)
 
 ## 개발자
 - front 박예빈
